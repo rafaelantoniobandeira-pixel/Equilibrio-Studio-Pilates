@@ -1,0 +1,6 @@
+{
+  "name": "Equilíbrio Studio Pilates",
+  "description": "Studio boutique de Pilates, Fisioterapia e Ginástica Rítmica com atendimento individualizado em Ponte Alta Norte do Gama, DF.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
