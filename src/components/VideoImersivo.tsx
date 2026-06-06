@@ -22,7 +22,7 @@ export default function VideoImersivo() {
   }, [mutedLoop]);
 
   return (
-    <section className="relative w-full h-[75vh] md:h-[80vh] bg-black-org overflow-hidden select-none">
+    <section className="relative w-full min-h-[75vh] md:min-h-[80vh] bg-black-org overflow-hidden select-none flex flex-col justify-center py-16 md:py-24">
       
       {/* Absolute high-design background, plays high-res aesthetic video under linear gradients */}
       <div className="absolute inset-0 z-0">
@@ -91,21 +91,21 @@ export default function VideoImersivo() {
               </button>
             </div>
 
-            {/* Video Box */}
+            {/* Video Box adjusted to 9:16 vertical cinema layout */}
             <motion.div
               initial={{ scale: 0.9, y: 30 }}
               animate={{ scale: 1, y: 0 }}
               exit={{ scale: 0.9, y: 30 }}
               transition={{ type: 'spring', damping: 30 }}
               onClick={(e) => e.stopPropagation()}
-              className="w-full max-w-5xl rounded-xs aspect-video overflow-hidden border border-line-sut shadow-2xl relative bg-black"
+              className="w-full max-w-[420px] rounded-lg aspect-[9/16] max-h-[82vh] overflow-hidden border border-line-sut/40 shadow-2xl relative bg-black"
             >
               <video
                 src={videoUrl}
                 autoPlay
                 controls
                 playsInline
-                className="w-full h-full object-contain bg-black"
+                className="w-full h-full object-cover bg-black"
               />
             </motion.div>
 

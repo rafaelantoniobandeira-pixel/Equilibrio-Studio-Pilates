@@ -39,35 +39,27 @@ export default function CustomCursor() {
       setVisible(true);
     };
 
-    const addHoverListeners = () => {
-      const interactableElements = document.querySelectorAll(
-        'button, a, input, select, textarea, [role="button"], .interactive-element'
-      );
-      interactableElements.forEach((el) => {
-        el.addEventListener('mouseenter', () => setHovered(true));
-        el.addEventListener('mouseleave', () => setHovered(false));
-      });
+    // Fast and memory-safe event delegation inside document boundaries
+    const handleMouseOver = (e: MouseEvent) => {
+      const target = e.target as HTMLElement | null;
+      if (target) {
+        const isInteractable = target.closest(
+          'button, a, input, select, textarea, [role="button"], .interactive-element'
+        );
+        setHovered(!!isInteractable);
+      }
     };
 
     window.addEventListener('mousemove', moveCursor);
     document.addEventListener('mouseleave', handleMouseLeave);
     document.addEventListener('mouseenter', handleMouseEnter);
-
-    // Initial listener scan
-    addHoverListeners();
-
-    // Create observer for dynamic updates
-    const observer = new MutationObserver(() => {
-      addHoverListeners();
-    });
-
-    observer.observe(document.body, { childList: true, subtree: true });
+    document.addEventListener('mouseover', handleMouseOver);
 
     return () => {
       window.removeEventListener('mousemove', moveCursor);
       document.removeEventListener('mouseleave', handleMouseLeave);
       document.removeEventListener('mouseenter', handleMouseEnter);
-      observer.disconnect();
+      document.removeEventListener('mouseover', handleMouseOver);
     };
   }, [cursorX, cursorY, visible]);
 

@@ -68,14 +68,12 @@ export default function Header() {
             }}
             className="flex items-center gap-3 group focus:outline-none"
           >
-            <div className="relative w-24 h-24 flex items-center justify-center">
-              <img
-                src="https://res.cloudinary.com/dxpwgum9x/image/upload/v1780780283/ChatGPT_Image_6_de_jun._de_2026_18_11_12_wu8j4w.png"
-                alt="Equilíbrio Studio Logo"
-                className="w-full h-full object-contain"
-                referrerPolicy="no-referrer"
-              />
-            </div>
+            <img
+              src="https://res.cloudinary.com/dxpwgum9x/image/upload/v1780780283/ChatGPT_Image_6_de_jun._de_2026_18_11_12_wu8j4w.png"
+              alt="Equilíbrio Studio Logo"
+              className="w-[125px] h-[68px] object-contain transition-transform group-hover:scale-[1.04]"
+              referrerPolicy="no-referrer"
+            />
             <div className="flex flex-col">
               <span className="text-[#76DDEF] font-display text-[1.05rem] font-bold tracking-[0.2em] leading-none uppercase">
                 Equilíbrio

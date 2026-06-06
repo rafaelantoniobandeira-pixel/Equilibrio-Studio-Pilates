@@ -180,9 +180,11 @@ export default function Hero() {
         
         {/* Left column for headline */}
         <div className="lg:col-span-8 flex flex-col items-start relative">
-          <h1 className="hero-headline text-display-lg text-white-crm italic font-normal tracking-tight select-none">
-            Viver sem dor e se mover com <span className="text-[#F69A4F] italic font-normal">confiança.</span>
-          </h1>
+          <div className="relative w-full">
+            <h1 className="hero-headline text-display-lg text-white-crm italic font-normal tracking-tight select-none">
+              Viver sem dor e se mover com <span className="text-[#F69A4F] italic font-normal">confiança.</span>
+            </h1>
+          </div>
 
           {/* Subtitle labels */}
           <p className="font-interface text-xs md:text-sm font-light uppercase tracking-[0.25em] text-white-crm/70 mt-6">

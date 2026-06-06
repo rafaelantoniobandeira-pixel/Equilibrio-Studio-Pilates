@@ -49,7 +49,7 @@ export default function Footer() {
             <img
               src="https://res.cloudinary.com/dxpwgum9x/image/upload/v1780780283/ChatGPT_Image_6_de_jun._de_2026_18_11_12_wu8j4w.png"
               alt="Equilíbrio Studio Logo"
-              className="w-20 h-20 object-contain"
+              className="w-[110px] h-[60px] object-contain"
               referrerPolicy="no-referrer"
             />
             <div className="flex flex-col">
