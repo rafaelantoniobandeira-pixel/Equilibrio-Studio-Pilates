@@ -36,13 +36,13 @@ export default function Contato() {
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto">
               {/* Primary button: WhatsApp black styled */}
               <a
-                href="https://wa.me/5561983614547?text=Olá!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20minha%20avaliação%20gratuita."
+                href="https://wa.me/5561983614547?text=Olá!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20minha%20avaliação."
                 target="_blank"
                 rel="noreferrer"
                 className="bg-[#1A1814] text-[#F4F1EC] hover:bg-[#1A1814]/90 border border-[#1A1814] duration-300 py-4 px-8 font-interface text-[0.72rem] tracking-[0.18em] uppercase text-center inline-flex items-center justify-center gap-2 group shadow-lg"
               >
                 <Phone size={14} className="group-hover:rotate-12 transition-transform" />
-                Agendar avaliação gratuita
+                Agendar avaliação
               </a>
 
               {/* Secondary button: Instagram border styled */}

@@ -7,7 +7,7 @@ import { motion } from 'motion/react';
 
 export default function FloatingWhatsApp() {
   const whatsappUrl =
-    'https://wa.me/5561983614547?text=Olá!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20minha%20avaliação%20gratuita.';
+    'https://wa.me/5561983614547?text=Olá!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20minha%20avaliação.';
 
   return (
     <motion.a

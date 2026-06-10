@@ -12,7 +12,7 @@ export const servicesData: ServiceItem[] = [
     name: 'Pilates',
     description: 'Se você convive com dores constantes na coluna, cervical ou joelhos, o Pilates é uma escolha segura. Aqui, nossa instrução é totalmente focada nas suas particularidades, ajudando seu corpo a se reabilitar e se fortalecer com calmaria.',
     whatsappText: 'Gostaria de saber mais sobre o atendimento de Pilates.',
-    ctaText: 'Quero uma avaliação gratuita'
+    ctaText: 'Quero uma avaliação'
   },
   {
     id: 'fisioterapia',

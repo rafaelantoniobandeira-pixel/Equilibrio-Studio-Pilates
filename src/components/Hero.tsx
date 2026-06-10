@@ -4,7 +4,7 @@
  */
 
 import { useEffect, MouseEvent } from 'react';
-import { motion, useScroll, useTransform, useSpring } from 'motion/react';
+import { motion } from 'motion/react';
 import { ArrowRight } from 'lucide-react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -12,12 +12,6 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Hero() {
-  const { scrollY } = useScroll();
-
-  // Create a clean, elegant zoom-in scroll transform for the main background photo
-  const rawScale = useTransform(scrollY, [0, 600], [1, 1.18]);
-  const scale = useSpring(rawScale, { stiffness: 80, damping: 26, mass: 0.5 });
-
   useEffect(() => {
     // Clean up if there is an existing hero-phrase2 to avoid duplication
     const existingPhrase2 = document.querySelector('.hero-phrase2');
@@ -148,14 +142,13 @@ export default function Hero() {
         }
       `}</style>
 
-      {/* Background Hero Image - Smoothly linked to scroll position */}
+      {/* Background Hero Image */}
       <div className="absolute inset-0 z-0 bg-black-org overflow-hidden">
-        <motion.img
+        <img
           src="https://res.cloudinary.com/dxpwgum9x/image/upload/v1780778097/ChatGPT_Image_6_de_jun._de_2026_17_34_43_wmi8pb.png"
           alt="Espaço Studio Pilates com luz solar"
           className="w-full h-full object-cover object-center opacity-50 brightness-[0.62]"
           referrerPolicy="no-referrer"
-          style={{ scale }}
         />
       </div>
 
@@ -199,7 +192,7 @@ export default function Hero() {
             onClick={handleScrollToContact}
             className="inline-flex items-center gap-4 bg-transparent border border-[rgba(244,241,236,0.5)] text-white py-5 px-8 font-interface text-xs font-semibold uppercase tracking-[0.2em] transition-all group duration-300 transform hover:-translate-y-0.5 hover:bg-white hover:text-black hover:border-transparent"
           >
-            Agendar avaliação gratuita
+            Agendar avaliação
             <ArrowRight size={15} className="group-hover:translate-x-1.5 transition-transform duration-300" />
           </a>
         </div>

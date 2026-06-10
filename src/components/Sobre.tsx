@@ -99,21 +99,21 @@ export default function Sobre() {
             {/* 3 Indicators numbers increment block */}
             <div className="grid grid-cols-3 gap-6 md:gap-8 border-t border-line-dark mt-12 pt-8 w-full">
               <div className="flex flex-col">
-                <Counter value={12} suffix="+" />
+                <Counter value={5} suffix="+" />
                 <span className="font-interface text-[0.68rem] uppercase tracking-widest text-[#6B6560] font-medium mt-2">
-                  Anos de prática
+                  Anos de estúdio
                 </span>
               </div>
               <div className="flex flex-col">
-                <Counter value={300} suffix="+" />
+                <Counter value={500} suffix="+" />
                 <span className="font-interface text-[0.68rem] uppercase tracking-widest text-[#6B6560] font-medium mt-2">
-                  Pessoas cuidadas
+                  Alunos atendidos
                 </span>
               </div>
               <div className="flex flex-col">
-                <Counter value={5} />
+                <Counter value={3} />
                 <span className="font-interface text-[0.68rem] uppercase tracking-widest text-[#6B6560] font-medium mt-2">
-                  Modalidades
+                  Especialidades
                 </span>
               </div>
             </div>

@@ -13,13 +13,17 @@ export default function Header() {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 40) {
+      const isPinned = window.innerWidth >= 768;
+      const threshold = isPinned ? window.innerHeight * 1.15 : 40;
+      
+      if (window.scrollY > threshold) {
         setScrolled(true);
       } else {
         setScrolled(false);
       }
     };
     window.addEventListener('scroll', handleScroll);
+    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -66,15 +70,15 @@ export default function Header() {
               e.preventDefault();
               window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
-            className="flex items-center gap-3 group focus:outline-none"
+            className="flex items-center gap-0 group focus:outline-none"
           >
             <img
               src="https://res.cloudinary.com/dxpwgum9x/image/upload/v1780780283/ChatGPT_Image_6_de_jun._de_2026_18_11_12_wu8j4w.png"
               alt="Equilíbrio Studio Logo"
-              className="w-[125px] h-[68px] object-contain transition-transform group-hover:scale-[1.04]"
+              className="w-[100px] h-[68px] object-contain transition-transform group-hover:scale-[1.04] ml-[-20px] mr-[-35px]"
               referrerPolicy="no-referrer"
             />
-            <div className="flex flex-col">
+            <div className="flex flex-col pl-0">
               <span className="text-[#76DDEF] font-display text-[1.05rem] font-bold tracking-[0.2em] leading-none uppercase">
                 Equilíbrio
               </span>
@@ -106,7 +110,7 @@ export default function Header() {
           {/* Desktop Call to Action */}
           <div className="hidden lg:block">
             <a
-              href="https://wa.me/5561983614547?text=Olá!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20minha%20avaliação%20gratuita."
+              href="https://wa.me/5561983614547?text=Olá!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20minha%20avaliação."
               target="_blank"
               rel="noreferrer"
               className="btn-editorial"
@@ -175,12 +179,12 @@ export default function Header() {
               className="relative"
             >
               <a
-                href="https://wa.me/5561983614547?text=Olá!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20minha%20avaliação%20gratuita."
+                href="https://wa.me/5561983614547?text=Olá!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20minha%20avaliação."
                 target="_blank"
                 rel="noreferrer"
                 className="w-full text-center flex items-center justify-center gap-2 py-4 bg-accent-a text-black-org font-interface text-xs uppercase tracking-[0.2em] font-medium hover:bg-accent-a/90 transition-colors"
               >
-                <Phone size={14} /> Agendar Avaliação Grátis
+                <Phone size={14} /> Agendar Avaliação
               </a>
               <div className="mt-6 text-center text-[0.68rem] text-muted-lbl">
                 Ponte Alta Norte do Gama, DF
