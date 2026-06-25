@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { motion, useScroll, useSpring } from 'motion/react';
+import { motion } from 'motion/react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Sobre from './components/Sobre';
@@ -15,24 +15,14 @@ import Contato from './components/Contato';
 import Footer from './components/Footer';
 import CustomCursor from './components/CustomCursor';
 import FloatingWhatsApp from './components/FloatingWhatsApp';
+import SmoothScroll from './components/SmoothScroll';
 
 export default function App() {
-  // Setup standard scroll progress tracking at the top border
-  const { scrollYProgress } = useScroll();
-  const scaleXSpring = useSpring(scrollYProgress, {
-    stiffness: 150,
-    damping: 40,
-    restDelta: 0.001
-  });
-
   return (
     <div id="app-root" className="min-h-screen bg-black-org text-white-crm relative selection:bg-accent-a selection:text-black-org">
       
-      {/* 1. Scroll Progress Bar */}
-      <motion.div
-        className="fixed top-0 left-0 right-0 h-[2.5px] origin-left z-[1000] pointer-events-none"
-        style={{ scaleX: scaleXSpring, backgroundImage: 'linear-gradient(to right, #76DDEF, #F69A4F)' }}
-      />
+      {/* Premium Smooth Scroll Engine */}
+      <SmoothScroll speed={1.1} inertia={0.075} />
 
       {/* 2. Custom Cursor Follower */}
       <CustomCursor />

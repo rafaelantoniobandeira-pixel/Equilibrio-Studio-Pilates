@@ -5,6 +5,7 @@
 
 import { useEffect, useState, useRef } from 'react';
 import { motion, useInView } from 'motion/react';
+import AnimatedTitle from './AnimatedTitle';
 
 function Counter({ value, suffix = '' }: { value: number; suffix?: string }) {
   const [count, setCount] = useState(0);
@@ -48,16 +49,18 @@ export default function Sobre() {
         {/* Left Side: 60% viewport editorial photograph, bleed layout */}
         <div className="lg:col-span-7 relative group select-none">
           {/* Outer container holding picture with parallax feel */}
-          <div className="overflow-hidden aspect-[2/3] md:aspect-[3/4] lg:aspect-[2/3] max-h-[750px] w-full border border-line-sut rounded-sm">
+          <div className="overflow-hidden w-full border border-line-sut rounded-sm">
             <motion.img
-              initial={{ scale: 1.15, filter: 'grayscale(0.3)' }}
+              initial={{ scale: 1.05, filter: 'grayscale(0.3)' }}
               whileInView={{ scale: 1, filter: 'grayscale(0.1)' }}
               viewport={{ once: true, margin: '-100px' }}
               transition={{ duration: 1.6, ease: [0.16, 1, 0.3, 1] }}
-              src="https://res.cloudinary.com/dxpwgum9x/image/upload/v1780757373/WhatsApp_Image_2026-06-04_at_14.23.49_2_dxivux.jpg"
+              src="https://res.cloudinary.com/dxpwgum9x/image/upload/v1782415872/WhatsApp_Image_2026-06-04_at_14.23.49_2_dxivux.jpg"
               alt="Priscilla sorrindo de forma acolhedora no Equilíbrio Studio Pilates"
-              className="w-full h-full object-cover object-center transform hover:scale-105 transition-transform duration-700"
+              className="w-full h-auto transform hover:scale-[1.03] transition-transform duration-700 block"
               referrerPolicy="no-referrer"
+              loading="lazy"
+              decoding="async"
             />
           </div>
           {/* Subtle line decoration to echo high-end architecture */}
@@ -76,10 +79,10 @@ export default function Sobre() {
           >
             <span className="label-eyebrow mb-3">01 / CONHEÇA A PRISCILLA</span>
             
-            <h2 className="text-display-md text-[#1A1814] italic font-light leading-[1.1] tracking-tight mb-8">
+            <AnimatedTitle className="text-display-md text-[#1A1814] italic font-light leading-[1.1] tracking-tight mb-8">
               Seu corpo ouvido <span className="font-sans not-italic font-extralight text-[#1A1814]/90">com calma,</span> <br className="hidden md:block" />
               <span className="text-accent-a font-normal">respeito e acolhimento.</span>
-            </h2>
+            </AnimatedTitle>
 
             <div className="font-interface text-sm md:text-[0.98rem] text-[#1A1814]/90 leading-relaxed font-light space-y-6 max-w-xl">
               <p>

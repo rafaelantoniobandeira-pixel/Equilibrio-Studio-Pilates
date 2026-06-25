@@ -51,6 +51,8 @@ export default function Footer() {
               alt="Equilíbrio Studio Logo"
               className="w-[100px] h-[60px] object-contain ml-[-20px] mr-[-35px]"
               referrerPolicy="no-referrer"
+              loading="lazy"
+              decoding="async"
             />
             <div className="flex flex-col pl-0">
               <span className="text-[#76DDEF] font-display font-bold text-sm tracking-widest uppercase">Equilíbrio</span>

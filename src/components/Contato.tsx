@@ -5,6 +5,7 @@
 
 import { motion } from 'motion/react';
 import { Phone, Instagram, MapPin, Clock } from 'lucide-react';
+import AnimatedTitle from './AnimatedTitle';
 
 export default function Contato() {
   return (
@@ -22,11 +23,11 @@ export default function Contato() {
           >
             <span className="label-eyebrow mb-3">05 / FALE COM A GENTE</span>
             
-            <h2 className="text-display-md text-[#1A1814] italic font-light leading-none mb-6">
+            <AnimatedTitle className="text-display-md text-[#1A1814] italic font-light leading-none mb-6">
               "Quer se mover <br />
               <span className="font-sans not-italic font-extralight text-[#1A1814]/80">sem sentir cansaço</span> <br />
               <span className="text-accent-a font-normal">ou dor?"</span>
-            </h2>
+            </AnimatedTitle>
 
             <p className="font-interface text-sm md:text-base text-[#6B6560] font-light leading-relaxed max-w-lg mb-10">
               Sem compromisso. Só uma conversa para entender o que seu corpo precisa. O contato é fácil e a gente responde no mesmo dia.

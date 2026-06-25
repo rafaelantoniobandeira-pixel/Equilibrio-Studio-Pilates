@@ -28,16 +28,16 @@ export default function Hero() {
     headline.innerHTML = words.map(w => {
       // Color 'confiança.' or 'confiança' with orange (#F69A4F) and italic
       const isAccent = w.toLowerCase().includes('confian');
-      const style = isAccent ? 'color:#F69A4F;font-style:italic' : '';
-      return `<span class="hw" style="display:inline-block;overflow:hidden"><span class="hwi" style="display:inline-block;${style}">${w}</span></span>`;
+      const style = isAccent ? 'color:#F69A4F;font-style:italic;letter-spacing:0.05em;font-variant-ligatures:none;font-feature-settings:\\"liga\\" 0, \\"clig\\" 0;' : '';
+      return `<span class="hw" style="display:inline-block;overflow:hidden;padding-bottom:0.45em;margin-bottom:-0.45em;padding-top:0.25em;margin-top:-0.25em;padding-right:0.2em;margin-right:-0.2em;vertical-align:bottom;line-height:1.25;"><span class="hwi" style="display:inline-block;line-height:1.25;${style}">${w}</span></span>`;
     }).join(' ');
 
     const phrase2 = document.createElement('div');
     phrase2.className = 'hero-phrase2';
     phrase2.innerHTML = `
-      <span class="p2w" style="display:inline-block;overflow:hidden"><span class="p2wi" style="display:inline-block">Quer</span></span>
-      <span class="p2w" style="display:inline-block;overflow:hidden"><span class="p2wi p2-accent" style="display:inline-block;font-style:italic;color:#76DDEF">conhecer</span></span>
-      <span class="p2w" style="display:inline-block;overflow:hidden"><span class="p2wi" style="display:inline-block">o nosso espaço?</span></span>
+      <span class="p2w" style="display:inline-block;overflow:hidden;padding-bottom:0.35em;margin-bottom:-0.35em;padding-top:0.15em;margin-top:-0.15em;padding-right:0.1em;margin-right:-0.1em;vertical-align:bottom;"><span class="p2wi" style="display:inline-block">Quer</span></span>
+      <span class="p2w" style="display:inline-block;overflow:hidden;padding-bottom:0.35em;margin-bottom:-0.35em;padding-top:0.15em;margin-top:-0.15em;padding-right:0.1em;margin-right:-0.1em;vertical-align:bottom;"><span class="p2wi p2-accent" style="display:inline-block;font-style:italic;color:#76DDEF">conhecer</span></span>
+      <span class="p2w" style="display:inline-block;overflow:hidden;padding-bottom:0.35em;margin-bottom:-0.35em;padding-top:0.15em;margin-top:-0.15em;padding-right:0.1em;margin-right:-0.1em;vertical-align:bottom;"><span class="p2wi" style="display:inline-block">o nosso espaço?</span></span>
     `;
 
     Object.assign(phrase2.style, {
@@ -149,6 +149,8 @@ export default function Hero() {
           alt="Espaço Studio Pilates com luz solar"
           className="w-full h-full object-cover object-center opacity-50 brightness-[0.62]"
           referrerPolicy="no-referrer"
+          loading="eager"
+          decoding="async"
         />
       </div>
 
@@ -175,7 +177,7 @@ export default function Hero() {
         <div className="lg:col-span-8 flex flex-col items-start relative">
           <div className="relative w-full">
             <h1 className="hero-headline text-display-lg text-white-crm italic font-normal tracking-tight select-none">
-              Viver sem dor e se mover com <span className="text-[#F69A4F] italic font-normal">confiança.</span>
+              Viver sem dor e se mover com <span className="text-[#F69A4F] italic font-normal" style={{ letterSpacing: '0.05em', fontVariantLigatures: 'none', fontFeatureSettings: '"liga" 0, "clig" 0', paddingBottom: '0.45em', marginBottom: '-0.45em', verticalAlign: 'bottom', display: 'inline-block', lineHeight: '1.25' }}>confiança.</span>
             </h1>
           </div>
 

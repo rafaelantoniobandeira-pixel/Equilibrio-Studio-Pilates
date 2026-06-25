@@ -7,6 +7,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ArrowRight, ChevronDown } from 'lucide-react';
 import { servicesData } from '../data';
+import AnimatedTitle from './AnimatedTitle';
 
 export default function Servicos() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
@@ -23,10 +24,10 @@ export default function Servicos() {
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
           <div>
             <span className="label-eyebrow block mb-3">02 / ESPECIALIDADES</span>
-            <h2 className="text-display-md text-[#1A1814] italic font-light">
+            <AnimatedTitle className="text-display-md text-[#1A1814] italic font-light">
               Nossas <span className="font-sans not-italic text-[#1A1814]/90 font-extralight">frentes de</span> <br />
               <span className="text-accent-a font-normal">atendimento.</span>
-            </h2>
+            </AnimatedTitle>
           </div>
         </div>
 

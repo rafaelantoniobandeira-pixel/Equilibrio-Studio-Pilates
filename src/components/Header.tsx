@@ -72,11 +72,22 @@ export default function Header() {
             }}
             className="flex items-center gap-0 group focus:outline-none"
           >
-            <img
+            <motion.img
               src="https://res.cloudinary.com/dxpwgum9x/image/upload/v1780780283/ChatGPT_Image_6_de_jun._de_2026_18_11_12_wu8j4w.png"
               alt="Equilíbrio Studio Logo"
-              className="w-[100px] h-[68px] object-contain transition-transform group-hover:scale-[1.04] ml-[-20px] mr-[-35px]"
+              className="w-[100px] h-[68px] object-contain ml-[-20px] mr-[-35px] origin-center"
+              whileHover={{
+                rotate: [0, -12, 10, -6, 4, 0],
+                y: [0, -6, 3, -1, 0],
+                scale: 1.05,
+                transition: {
+                  duration: 0.9,
+                  ease: "easeInOut"
+                }
+              }}
               referrerPolicy="no-referrer"
+              loading="eager"
+              decoding="async"
             />
             <div className="flex flex-col pl-0">
               <span className="text-[#76DDEF] font-display text-[1.05rem] font-bold tracking-[0.2em] leading-none uppercase">

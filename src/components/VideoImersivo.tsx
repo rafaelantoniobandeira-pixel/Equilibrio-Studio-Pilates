@@ -6,13 +6,14 @@
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Play, X } from 'lucide-react';
+import AnimatedTitle from './AnimatedTitle';
 
 export default function VideoImersivo() {
   const [isPlayingFull, setIsPlayingFull] = useState(false);
   const mutedLoop = true;
   const videoRef = useRef<HTMLVideoElement>(null);
 
-  const videoUrl = 'https://res.cloudinary.com/dxpwgum9x/video/upload/v1780775300/video_estudio_pilates_lc9jeo.mp4';
+  const videoUrl = 'https://res.cloudinary.com/dxpwgum9x/video/upload/v1782417133/video_estudio_pilates_lc9jeo.mp4';
 
   // Ensure native video element's muted state synchronizes reliably with React state changes
   useEffect(() => {
@@ -62,10 +63,10 @@ export default function VideoImersivo() {
         {/* Text descriptions anchored below the clip framing */}
         <div className="text-center flex flex-col items-center gap-3">
           <span className="label-eyebrow text-accent-a/90">CONHEÇA O NOSSO ESPAÇO</span>
-          <h2 className="text-display-md text-white-crm font-light italic leading-none">
+          <AnimatedTitle className="text-display-md text-white-crm font-light italic leading-none">
             "Um refúgio para <br />
             <span className="font-sans not-italic text-white-crm/80 font-extralight">recuperar o equilíbrio duradouro."</span>
-          </h2>
+          </AnimatedTitle>
         </div>
 
       </div>

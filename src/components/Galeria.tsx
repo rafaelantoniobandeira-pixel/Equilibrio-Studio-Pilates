@@ -7,6 +7,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { X, ChevronLeft, ChevronRight, Maximize2, ArrowLeft, ArrowRight } from 'lucide-react';
 import { galleryData } from '../data';
+import AnimatedTitle from './AnimatedTitle';
 
 export default function Galeria() {
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
@@ -75,11 +76,11 @@ export default function Galeria() {
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
           <div>
             <span className="label-eyebrow block mb-3">03 / CONEXÃO VISUAL</span>
-            <h2 className="text-display-md text-[#1A1814] italic font-light">
+            <AnimatedTitle className="text-display-md text-[#1A1814] italic font-light">
               Nosso espaço <br />
               <span className="font-sans not-italic text-[#1A1814]/80 font-extralight">e refinamento em</span> <br />
               <span className="text-accent-a font-normal">detalhes.</span>
-            </h2>
+            </AnimatedTitle>
           </div>
         </div>
 
@@ -138,6 +139,8 @@ export default function Galeria() {
                     alt={item.alt}
                     className="w-full h-full object-cover transition-all pointer-events-none duration-700 select-none"
                     referrerPolicy="no-referrer"
+                    loading="lazy"
+                    decoding="async"
                   />
 
                   {/* Elegant floating active overlay indicator */}
@@ -265,6 +268,7 @@ export default function Galeria() {
                     alt={galleryData[selectedImageIndex].alt}
                     className="max-h-[60vh] object-contain border border-line-sut shadow-2xl"
                     referrerPolicy="no-referrer"
+                    decoding="async"
                   />
                 </motion.div>
               </AnimatePresence>
