@@ -13,7 +13,6 @@ import VideoImersivo from './components/VideoImersivo';
 import Depoimentos from './components/Depoimentos';
 import Contato from './components/Contato';
 import Footer from './components/Footer';
-import CustomCursor from './components/CustomCursor';
 import FloatingWhatsApp from './components/FloatingWhatsApp';
 import SmoothScroll from './components/SmoothScroll';
 
@@ -23,9 +22,6 @@ export default function App() {
       
       {/* Premium Smooth Scroll Engine */}
       <SmoothScroll speed={1.1} inertia={0.075} />
-
-      {/* 2. Custom Cursor Follower */}
-      <CustomCursor />
 
       {/* 3. Global Header Header */}
       <Header />

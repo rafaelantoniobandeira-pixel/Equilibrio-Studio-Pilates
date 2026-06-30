@@ -42,24 +42,55 @@ function Counter({ value, suffix = '' }: { value: number; suffix?: string }) {
 }
 
 export default function Sobre() {
+  const [imgState, setImgState] = useState<'loading' | 'success' | 'error'>('loading');
+
   return (
     <section id="sobre" className="w-full bg-[#F4F1EC] py-24 md:py-32 border-b border-line-dark overflow-hidden text-[#1A1814]">
       <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
         
         {/* Left Side: 60% viewport editorial photograph, bleed layout */}
-        <div className="lg:col-span-7 relative group select-none">
-          {/* Outer container holding picture with parallax feel */}
-          <div className="overflow-hidden w-full border border-line-sut rounded-sm">
+        <div className="lg:col-span-7 relative group select-none w-full">
+          {/* Outer container holding picture with stable aspect ratio */}
+          <div className="overflow-hidden w-full aspect-[3/4] md:aspect-[4/5] lg:aspect-[3/4] max-h-[720px] border border-line-sut rounded-sm relative bg-[#EBE5DB]">
+            
+            {/* Shimmer / Skeleton Loader */}
+            {imgState === 'loading' && (
+              <div className="absolute inset-0 flex flex-col items-center justify-center bg-[#E6DEC1]/10 animate-pulse z-10">
+                <div className="w-8 h-8 rounded-full border-2 border-accent-a/30 border-t-accent-a animate-spin mb-3" />
+                <span className="font-interface text-[11px] uppercase tracking-widest text-[#6B6560] font-light">
+                  Carregando imagem...
+                </span>
+              </div>
+            )}
+
+            {/* Error Fallback Layout */}
+            {imgState === 'error' && (
+              <div className="absolute inset-0 flex flex-col items-center justify-center p-8 text-center bg-[#E5DFD5] z-10">
+                <span className="text-accent-a font-display italic text-3xl mb-4">Equilíbrio</span>
+                <span className="font-interface text-sm text-[#1A1814]/80 max-w-xs font-light">
+                  Priscilla — Fisioterapeuta e Instrutora de Pilates
+                </span>
+                <span className="font-interface text-[10px] uppercase tracking-wider text-[#6B6560] mt-4 opacity-60">
+                  Estúdio de Pilates & Bem-Estar
+                </span>
+              </div>
+            )}
+
             <motion.img
-              initial={{ scale: 1.05, filter: 'grayscale(0.3)' }}
-              whileInView={{ scale: 1, filter: 'grayscale(0.1)' }}
-              viewport={{ once: true, margin: '-100px' }}
-              transition={{ duration: 1.6, ease: [0.16, 1, 0.3, 1] }}
+              initial={{ scale: 1.05, filter: 'grayscale(0.3)', opacity: 0 }}
+              animate={{ 
+                scale: imgState === 'success' ? 1 : 1.05,
+                filter: imgState === 'success' ? 'grayscale(0)' : 'grayscale(0.3)',
+                opacity: imgState === 'success' ? 1 : 0
+              }}
+              transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
               src="https://res.cloudinary.com/dxpwgum9x/image/upload/v1782415872/WhatsApp_Image_2026-06-04_at_14.23.49_2_dxivux.jpg"
               alt="Priscilla sorrindo de forma acolhedora no Equilíbrio Studio Pilates"
-              className="w-full h-auto transform hover:scale-[1.03] transition-transform duration-700 block"
+              className="w-full h-full object-cover object-center transform hover:scale-[1.03] transition-transform duration-700 block"
               referrerPolicy="no-referrer"
-              loading="lazy"
+              onLoad={() => setImgState('success')}
+              onError={() => setImgState('error')}
+              loading="eager"
               decoding="async"
             />
           </div>
