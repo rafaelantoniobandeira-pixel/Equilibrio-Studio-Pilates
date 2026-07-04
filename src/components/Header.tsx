@@ -4,27 +4,74 @@
  */
 
 import { useState, useEffect } from 'react';
-import { Menu, X, Phone } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
-export default function Header() {
+interface HeaderProps {
+  isIntroActive?: boolean;
+}
+
+export default function Header({ isIntroActive = false }: HeaderProps) {
   const [scrolled, setScrolled] = useState(false);
+  const [visible, setVisible] = useState(true);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('#inicio');
 
   useEffect(() => {
+    let lastY = window.scrollY;
+    
     const handleScroll = () => {
+      const currentScrollY = window.scrollY;
       const isPinned = window.innerWidth >= 768;
-      const threshold = isPinned ? window.innerHeight * 1.15 : 40;
+      const threshold = isPinned ? window.innerHeight * 0.9 : 40;
       
-      if (window.scrollY > threshold) {
+      if (currentScrollY > threshold) {
         setScrolled(true);
       } else {
         setScrolled(false);
       }
+
+      if (currentScrollY < 40) {
+        setVisible(true);
+      } else if (currentScrollY > lastY) {
+        // Scrolling down
+        setVisible(false);
+      } else {
+        // Scrolling up
+        setVisible(true);
+      }
+      
+      lastY = currentScrollY;
     };
-    window.addEventListener('scroll', handleScroll);
+    
+    window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Native IntersectionObserver for automatic high-end active section tracking
+  useEffect(() => {
+    const observerOptions = {
+      root: null,
+      rootMargin: '-30% 0px -60% 0px',
+      threshold: 0,
+    };
+
+    const observerCallback = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveSection(`#${entry.target.id}`);
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+    const sections = document.querySelectorAll('section[id]');
+    sections.forEach((section) => observer.observe(section));
+
+    return () => {
+      sections.forEach((section) => observer.unobserve(section));
+    };
   }, []);
 
   const menuItems = [
@@ -36,108 +83,100 @@ export default function Header() {
     { label: 'Contato', href: '#contato' },
   ];
 
-  const handleLinkClick = (href: string) => {
+  const handleLinkClick = () => {
     setMobileMenuOpen(false);
-    const element = document.querySelector(href);
-    if (element) {
-      const offset = 80; // height of fixed header
-      const bodyRect = document.body.getBoundingClientRect().top;
-      const elementRect = element.getBoundingClientRect().top;
-      const elementPosition = elementRect - bodyRect;
-      const offsetPosition = elementPosition - offset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth',
-      });
-    }
   };
 
   return (
     <>
       <header
-        className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
+        className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ease-in-out transform ${
+          visible ? 'translate-y-0' : '-translate-y-full'
+        } ${
           scrolled
-            ? 'bg-black-org/90 backdrop-blur-xl border-b border-line-sut py-4 shadow-xl'
-            : 'bg-transparent py-6 border-b border-transparent'
+            ? 'bg-black-org/95 backdrop-blur-xl border-b border-white/[0.06] py-4 shadow-[0_12px_40px_-12px_rgba(0,0,0,0.75)]'
+            : 'bg-transparent py-8 border-b border-transparent'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
-          {/* Elegant SVG Logo representation */}
-          <a
-            href="#inicio"
-            onClick={(e) => {
-              e.preventDefault();
-              window.scrollTo({ top: 0, behavior: 'smooth' });
-            }}
-            className="flex items-center gap-0 group focus:outline-none"
-          >
-            <motion.img
-              src="https://res.cloudinary.com/dxpwgum9x/image/upload/v1780780283/ChatGPT_Image_6_de_jun._de_2026_18_11_12_wu8j4w.png"
-              alt="Equilíbrio Studio Logo"
-              className="w-[100px] h-[68px] object-contain ml-[-20px] mr-[-35px] origin-center"
-              whileHover={{
-                rotate: [0, -12, 10, -6, 4, 0],
-                y: [0, -6, 3, -1, 0],
-                scale: 1.05,
-                transition: {
-                  duration: 0.9,
-                  ease: "easeInOut"
-                }
-              }}
-              referrerPolicy="no-referrer"
-              loading="eager"
-              decoding="async"
-            />
-            <div className="flex flex-col pl-0">
-              <span className="text-[#76DDEF] font-display text-[1.05rem] font-bold tracking-[0.2em] leading-none uppercase">
-                Equilíbrio
-              </span>
-              <div className="mt-1.5">
-                <span className="text-white font-interface text-[0.5rem] font-bold tracking-[0.25em] leading-none uppercase px-1.5 py-0.5 bg-[#F69A4F] rounded-[3px] inline-block">
-                  Studio Pilates
-                </span>
-              </div>
-            </div>
-          </a>
-
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-8">
-            {menuItems.map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleLinkClick(item.href);
-                }}
-                className="nav-link cursor-pointer"
-              >
-                {item.label}
-              </a>
-            ))}
-          </nav>
-
-          {/* Desktop Call to Action */}
-          <div className="hidden lg:block">
+        <div className="w-full max-w-none px-6 md:px-16 lg:px-24 flex items-center justify-between lg:grid lg:grid-cols-3">
+          {/* Logo Column */}
+          <div className="flex justify-start">
             <a
-              href="https://wa.me/5561983614547?text=Olá!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20minha%20avaliação."
-              target="_blank"
-              rel="noreferrer"
-              className="btn-editorial"
+              href="#inicio"
+              onClick={(e) => {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+              className="group focus:outline-none"
             >
-              Agendar Avaliação
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={isIntroActive ? { opacity: 0, y: -10 } : { opacity: 1, y: 0 }}
+                transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
+                className="flex items-center select-none"
+              >
+                <div className="flex items-baseline gap-2 md:gap-2.5">
+                  <span className="font-display text-[1.75rem] md:text-[2.3rem] text-white-crm tracking-tight font-normal transition-colors duration-300 group-hover:text-accent-a leading-none">
+                    Equilíbrio
+                  </span>
+                  <span className="font-interface text-[0.58rem] md:text-[0.65rem] tracking-[0.48em] uppercase text-white-crm/60 group-hover:text-accent-a/90 transition-colors duration-300 font-medium leading-none">
+                    studio
+                  </span>
+                </div>
+              </motion.div>
             </a>
           </div>
 
-          {/* Mobile Hamburguer button */}
-          <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden text-white-crm focus:outline-none p-1 border border-line-sut hover:border-accent-a/50 transition-colors"
-            aria-label="Toggle Menu"
+          {/* Desktop Navigation Column (perfectly centered) */}
+          <motion.nav
+            initial="hidden"
+            animate={isIntroActive ? "hidden" : "visible"}
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: {
+                  staggerChildren: 0.04,
+                  delayChildren: 0.15,
+                }
+              }
+            }}
+            className="hidden lg:flex items-center justify-center gap-10 col-span-1"
           >
-            {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
-          </button>
+            {menuItems.map((item) => {
+              const isActive = activeSection === item.href;
+              return (
+                <motion.a
+                  variants={{
+                    hidden: { opacity: 0, y: -8 },
+                    visible: { opacity: 1, y: 0, transition: { duration: 0.9, ease: [0.16, 1, 0.3, 1] } }
+                  }}
+                  key={item.label}
+                  href={item.href}
+                  className={`cursor-pointer transition-opacity duration-300 relative py-2.5 group text-[0.78rem] tracking-[0.22em] uppercase font-medium ${
+                    isActive ? 'opacity-100 text-white-crm' : 'opacity-60 text-white-crm/90 hover:opacity-100'
+                  }`}
+                >
+                  {item.label}
+                  <span
+                    className="absolute bottom-0 left-1/2 -translate-x-1/2 h-[1px] bg-accent-a transition-all duration-400 ease-out w-0 group-hover:w-full opacity-70"
+                  />
+                </motion.a>
+              );
+            })}
+          </motion.nav>
+
+          {/* Action/Mobile Column */}
+          <div className="flex justify-end col-span-1">
+            {/* Mobile Hamburguer button */}
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="lg:hidden text-white-crm focus:outline-none p-1.5 border border-line-sut hover:border-accent-a/50 transition-colors"
+              aria-label="Toggle Menu"
+            >
+              {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+            </button>
+          </div>
         </div>
       </header>
 
@@ -172,35 +211,13 @@ export default function Header() {
                   transition={{ delay: index * 0.08, duration: 0.5, ease: 'easeOut' }}
                   key={item.label}
                   href={item.href}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    handleLinkClick(item.href);
-                  }}
+                  onClick={handleLinkClick}
                   className="text-display-sm text-white-crm italic hover:text-accent-a transition-colors"
                 >
                   {item.label}
                 </motion.a>
               ))}
             </nav>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5, duration: 0.5 }}
-              className="relative"
-            >
-              <a
-                href="https://wa.me/5561983614547?text=Olá!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20minha%20avaliação."
-                target="_blank"
-                rel="noreferrer"
-                className="w-full text-center flex items-center justify-center gap-2 py-4 bg-accent-a text-black-org font-interface text-xs uppercase tracking-[0.2em] font-medium hover:bg-accent-a/90 transition-colors"
-              >
-                <Phone size={14} /> Agendar Avaliação
-              </a>
-              <div className="mt-6 text-center text-[0.68rem] text-muted-lbl">
-                Ponte Alta Norte do Gama, DF
-              </div>
-            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>

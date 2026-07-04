@@ -45,22 +45,12 @@ export default function Footer() {
         
         {/* Column 1: Logo + brand quote description */}
         <div className="md:col-span-5 flex flex-col items-start gap-4">
-          <div className="flex items-center gap-0">
-            <img
-              src="https://res.cloudinary.com/dxpwgum9x/image/upload/v1780780283/ChatGPT_Image_6_de_jun._de_2026_18_11_12_wu8j4w.png"
-              alt="Equilíbrio Studio Logo"
-              className="w-[100px] h-[60px] object-contain ml-[-20px] mr-[-35px]"
-              referrerPolicy="no-referrer"
-              loading="lazy"
-              decoding="async"
-            />
-            <div className="flex flex-col pl-0">
-              <span className="text-[#76DDEF] font-display font-bold text-sm tracking-widest uppercase">Equilíbrio</span>
-              <div className="mt-1">
-                <span className="text-white text-[0.4rem] font-bold uppercase tracking-[0.2em] leading-none px-1.5 py-0.5 bg-[#F69A4F] rounded-[3px] inline-block">
-                  Studio Pilates
-                </span>
-              </div>
+          <div className="flex flex-col items-start gap-1">
+            <span className="text-[#76DDEF] font-display font-bold text-lg tracking-widest uppercase">Equilíbrio</span>
+            <div>
+              <span className="text-white text-[0.45rem] font-bold uppercase tracking-[0.2em] leading-none px-2 py-0.5 bg-[#F69A4F] rounded-[3px] inline-block">
+                Studio Pilates
+              </span>
             </div>
           </div>
           <p className="font-interface text-xs text-muted-lbl max-w-sm mt-2 leading-relaxed">

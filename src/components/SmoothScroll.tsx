@@ -104,7 +104,7 @@ export default function SmoothScroll({ speed = 1.0, inertia = 0.075 }: SmoothScr
             cancelAnimationFrame(animationFrameId);
           }
 
-          const headerOffset = 85; // fixed header offset
+          const headerOffset = 0; // set to 0 to allow sections to fill the viewport completely to the top
           const bodyRect = document.body.getBoundingClientRect().top;
           const elementRect = element.getBoundingClientRect().top;
           const elementPosition = elementRect - bodyRect;

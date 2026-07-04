@@ -3,6 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
+import { useState } from 'react';
 import { motion } from 'motion/react';
 import Header from './components/Header';
 import Hero from './components/Hero';
@@ -13,22 +14,31 @@ import VideoImersivo from './components/VideoImersivo';
 import Depoimentos from './components/Depoimentos';
 import Contato from './components/Contato';
 import Footer from './components/Footer';
-import FloatingWhatsApp from './components/FloatingWhatsApp';
 import SmoothScroll from './components/SmoothScroll';
+import IntroLoader from './components/IntroLoader';
+import CustomCursor from './components/CustomCursor';
 
 export default function App() {
+  const [isIntroActive, setIsIntroActive] = useState(true);
+
   return (
     <div id="app-root" className="min-h-screen bg-black-org text-white-crm relative selection:bg-accent-a selection:text-black-org">
       
+      {/* Premium Custom Mouse Follower Circle */}
+      <CustomCursor />
+
+      {/* Premium Session-scoped Intro Loader */}
+      <IntroLoader onComplete={() => setIsIntroActive(false)} />
+
       {/* Premium Smooth Scroll Engine */}
       <SmoothScroll speed={1.1} inertia={0.075} />
 
       {/* 3. Global Header Header */}
-      <Header />
+      <Header isIntroActive={isIntroActive} />
 
       {/* 4. Hero Visual Presentation */}
       {/* INSERIR: hero.jpg */}
-      <Hero />
+      <Hero isIntroActive={isIntroActive} />
 
       {/* 5. Editorial Studio presentation */}
       {/* INSERIR: sobre.jpg */}
@@ -63,9 +73,6 @@ export default function App() {
 
       {/* 11. Footer credits and link menus */}
       <Footer />
-
-      {/* 12. Pulsating floating communicative widget */}
-      <FloatingWhatsApp />
 
     </div>
   );

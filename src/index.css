@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,700;1,6..96,400&family=Jost:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Jost:wght@300;400;500;600&display=swap');
 @import "tailwindcss";
 
 @theme {
@@ -10,7 +10,7 @@
   --color-line-sut: rgba(244,241,236,0.12);
   --color-line-dark: rgba(11,11,10,0.12);
 
-  --font-display: "Bodoni Moda", serif;
+  --font-display: "Cormorant Garamond", serif;
   --font-interface: "Jost", sans-serif;
 }
 
@@ -205,4 +205,69 @@
   opacity: 1;
   transform: translateY(0);
 }
+
+/* Premium CTA Glow and Shine Effect */
+@keyframes shine-sweep {
+  0% {
+    left: -150%;
+  }
+  50% {
+    left: 150%;
+  }
+  100% {
+    left: 150%;
+  }
+}
+
+.cta-shining {
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.cta-shining::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 60px;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.52) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-25deg);
+  left: -150%;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.cta-shining:hover::before {
+  animation: shine-sweep 1.6s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+
+/* Dark themed buttons get high-contrast glowing elements */
+.glow-btn-orange {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.glow-btn-orange:hover {
+  box-shadow: 0 0 32px rgba(246, 154, 79, 0.5);
+  border-color: #F69A4F !important;
+}
+
+.glow-btn-teal {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.glow-btn-teal:hover {
+  box-shadow: 0 0 32px rgba(14, 114, 129, 0.45);
+  border-color: #0E7281 !important;
+}
+
+.glow-btn-dark {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.glow-btn-dark:hover {
+  box-shadow: 0 0 32px rgba(26, 24, 20, 0.25);
+}
+
 
