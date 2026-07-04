@@ -103,10 +103,6 @@ export default function Header({ isIntroActive = false }: HeaderProps) {
           <div className="flex justify-start">
             <a
               href="#inicio"
-              onClick={(e) => {
-                e.preventDefault();
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-              }}
               className="group focus:outline-none"
             >
               <motion.div

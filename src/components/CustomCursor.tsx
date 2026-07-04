@@ -89,7 +89,6 @@ export default function CustomCursor() {
         }}
         animate={{
           scale: isHovered ? 1.5 : 1,
-          backgroundColor: isHovered ? '#76DDEF' : '#F69A4F',
         }}
         transition={{ type: 'spring', stiffness: 450, damping: 25 }}
       />
@@ -105,8 +104,8 @@ export default function CustomCursor() {
         }}
         animate={{
           scale: isHovered ? 1.8 : 1,
-          borderColor: isHovered ? '#76DDEF' : 'rgba(244, 241, 236, 0.45)',
-          backgroundColor: isHovered ? 'rgba(118, 221, 239, 0.08)' : 'rgba(255, 255, 255, 0)',
+          borderColor: isHovered ? '#F69A4F' : 'rgba(244, 241, 236, 0.45)',
+          backgroundColor: isHovered ? 'rgba(246, 154, 79, 0.08)' : 'rgba(255, 255, 255, 0)',
         }}
         transition={{ type: 'spring', stiffness: 350, damping: 25 }}
       />

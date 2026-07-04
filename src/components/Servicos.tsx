@@ -3,58 +3,12 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState, useEffect, useRef } from 'react';
-import { motion } from 'motion/react';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
 import { ArrowRight, ChevronDown } from 'lucide-react';
-import { gsap } from 'gsap';
 import AnimatedTitle from './AnimatedTitle';
 
-// Accordion Collapsible using GSAP for buttery smooth physics-based height and opacity animation
-interface AccordionContentProps {
-  isOpen: boolean;
-  children: React.ReactNode;
-}
-
-function AccordionContent({ isOpen, children }: AccordionContentProps) {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [shouldRender, setShouldRender] = useState(isOpen);
-
-  useEffect(() => {
-    if (isOpen) {
-      setShouldRender(true);
-      // Wait a tick so the component is rendered in the DOM before GSAP queries its height
-      const ctx = gsap.context(() => {
-        gsap.fromTo(containerRef.current,
-          { height: 0, opacity: 0, y: 15 },
-          { height: 'auto', opacity: 1, y: 0, duration: 0.75, ease: 'power3.out' }
-        );
-      });
-      return () => ctx.revert();
-    } else {
-      const ctx = gsap.context(() => {
-        gsap.to(containerRef.current, {
-          height: 0,
-          opacity: 0,
-          y: -10,
-          duration: 0.55,
-          ease: 'power3.inOut',
-          onComplete: () => setShouldRender(false)
-        });
-      });
-      return () => ctx.revert();
-    }
-  }, [isOpen]);
-
-  if (!shouldRender) return null;
-
-  return (
-    <div ref={containerRef} className="overflow-hidden">
-      {children}
-    </div>
-  );
-}
-
-// Enriched Specialties Data for unmatched layout polish
+// Enriched Specialties Data (aligned with data.ts but localized for inline styling details if needed)
 const specialties = [
   {
     id: 'pilates',
@@ -135,38 +89,44 @@ const specialties = [
 
 export default function Servicos() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const [activeIndex, setActiveIndex] = useState<number | null>(0); // Default open first for richer layout
 
   return (
     <section
       id="servicos"
-      className="w-full bg-[#F4F1EC] py-24 md:py-32 border-b border-[rgba(26,24,20,0.12)] relative select-none text-[#1A1814] overflow-hidden"
+      className="w-full bg-[#FAF8F5] py-24 md:py-32 border-b border-[#1A1814]/10 relative select-none text-[#1A1814] overflow-hidden"
     >
-      {/* Background warm tactile pattern */}
-      <div className="absolute inset-0 bg-[#F4F1EC] pointer-events-none" />
-      
-      {/* Container grid */}
-      <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+      {/* Background radial gradient to give this section its own distinct soft glow */}
+      <div className="absolute inset-0 bg-[#FAF8F5]" />
+      <div className="absolute top-[30%] -left-[10%] w-[50%] aspect-square rounded-full bg-[#0E7281]/[0.03] blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-[20%] -right-[10%] w-[50%] aspect-square rounded-full bg-[#F69A4F]/[0.03] blur-[120px] pointer-events-none" />
+
+      {/* Decorative vertical background label */}
+      <div className="absolute right-12 top-24 pointer-events-none opacity-[0.03] select-none font-display italic text-[11vw] leading-none text-[#1A1814] rotate-90 origin-top-right">
+        Studio
+      </div>
+
+      <div className="max-w-4xl mx-auto px-6 relative z-10">
         
-        {/* Header section with title and brief introduction */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 mb-20 items-end">
-          <div className="lg:col-span-7">
-            <span className="label-eyebrow block mb-3">02 / ESPECIALIDADES</span>
-            <AnimatedTitle className="text-display-md text-[#1A1814] italic font-light leading-none">
-              Nossas <span className="font-sans not-italic text-[#1A1814]/90 font-extralight">frentes de</span> <br />
-              <span className="text-accent-a font-normal">atendimento.</span>
-            </AnimatedTitle>
+        {/* Centered high-impact Header */}
+        <div className="flex flex-col items-center justify-center text-center mb-14 gap-3 relative z-10">
+          <div className="flex items-center gap-2 mb-1 justify-center">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#0E7281]" />
+            <span className="label-eyebrow tracking-[0.25em] text-[0.68rem] font-semibold text-[#1A1814]/65 uppercase">
+              02 / ESPECIALIDADES
+            </span>
           </div>
-          <div className="lg:col-span-5">
-            <p className="font-interface text-sm md:text-base leading-relaxed text-[#6B6560] font-light">
-              Oferecemos abordagens terapêuticas e corporais altamente refinadas, pensadas para reabilitar, fortalecer e redefinir o equilíbrio do seu corpo de maneira individualizada, científica e acolhedora.
-            </p>
-          </div>
+          <AnimatedTitle className="text-display-md text-[#1A1814] italic font-light leading-[1.15] tracking-tight max-w-2xl">
+            Nossas <span className="font-sans not-italic text-[#1A1814]/90 font-extralight">frentes de</span> <br />
+            <span className="text-accent-a font-normal">atendimento.</span>
+          </AnimatedTitle>
+          <p className="font-interface text-sm md:text-base leading-relaxed text-[#6B6560] font-light max-w-2xl mt-3">
+            Oferecemos abordagens terapêuticas e corporais altamente refinadas, pensadas para reabilitar, fortalecer e redefinir o equilíbrio do seu corpo de maneira individualizada, científica e acolhedora.
+          </p>
         </div>
 
-        {/* ACCORDION CONTAINER */}
-        <div className="relative mt-8 border-t border-[rgba(26,24,20,0.15)]">
-
+        {/* Premium Accordion in a neat focused container */}
+        <div className="border-t border-[#1A1814]/10 divide-y divide-[#1A1814]/10">
           {specialties.map((service, index) => {
             const isOpen = activeIndex === index;
             const isHovered = hoveredIndex === index;
@@ -177,134 +137,131 @@ export default function Servicos() {
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
                 onClick={() => setActiveIndex(isOpen ? null : index)}
-                className={`border-b transition-all duration-500 relative group cursor-pointer overflow-hidden ${
+                className={`transition-all duration-500 relative cursor-pointer overflow-hidden ${
                   isOpen 
-                    ? 'border-[#0E7281]/35 bg-[#FAF8F5]' 
-                    : 'border-[rgba(26,24,20,0.12)] hover:bg-[#FAF8F5]/50'
+                    ? 'bg-[#FAF8F5]' 
+                    : 'hover:bg-[#FAF8F5]/60'
                 }`}
               >
-                {/* Visual left indicator ribbon for premium active focus */}
+                {/* Left Active Line Accent */}
                 <div 
-                  className={`absolute left-0 top-0 bottom-0 w-[3px] bg-[#0E7281] transition-transform duration-500 origin-left ${
+                  className={`absolute left-0 top-0 bottom-0 w-[4px] bg-[#0E7281] transition-transform duration-500 origin-left ${
                     isOpen ? 'scale-x-100' : 'scale-x-0'
                   }`}
                 />
 
-                {/* Main Accordion Row Header */}
-                <div className="flex items-center justify-between py-8 md:py-10 px-4 md:px-8 transition-all duration-500">
-                  <div className="flex items-center gap-6 md:gap-12 pl-2">
-                    {/* Item Number */}
-                    <span className={`font-display text-lg md:text-xl font-medium transition-all duration-500 ${
+                {/* Accordion Trigger Header */}
+                <div className="flex items-center justify-between py-6 md:py-8 px-4 md:px-6">
+                  <div className="flex items-center gap-6">
+                    {/* Number indicator */}
+                    <span className={`font-mono text-xs font-bold transition-all duration-500 ${
                       isOpen 
                         ? 'text-[#F69A4F] scale-110' 
                         : isHovered 
                           ? 'text-[#0E7281] scale-105' 
-                          : 'text-[#0E7281]'
+                          : 'text-[#1A1814]/40'
                     }`}>
                       {service.num}
                     </span>
                     
-                    {/* Item Title */}
-                    <h3
-                      className={`font-interface text-[1.3rem] md:text-[1.8rem] lg:text-[2rem] transition-all duration-500 font-extralight tracking-[0.08em] uppercase ${
-                        isOpen 
-                          ? 'text-[#1A1814] font-normal translate-x-2' 
-                          : isHovered 
-                            ? 'text-[#1A1814] translate-x-1.5' 
-                            : 'text-[#1A1814]/45'
-                      }`}
-                    >
+                    {/* Title */}
+                    <h3 className={`font-interface text-lg md:text-xl lg:text-2xl tracking-wider uppercase transition-all duration-500 ${
+                      isOpen 
+                        ? 'text-[#1a1814] font-medium' 
+                        : isHovered 
+                          ? 'text-[#1a1814]' 
+                          : 'text-[#1a1814]/50'
+                    }`}>
                       {service.name}
                     </h3>
                   </div>
 
-                  <div className="flex items-center gap-4 pr-2">
-                    {/* Expand Chevron Icon with precise rotation */}
-                    <motion.div
-                      animate={{ rotate: isOpen ? 180 : 0 }}
-                      transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                      className={`p-2 rounded-full border transition-all duration-500 ${
-                        isOpen 
-                          ? 'border-[#F69A4F]/20 bg-[#F69A4F]/5 text-[#F69A4F]' 
-                          : 'border-transparent text-[#1A1814]/40 group-hover:border-[rgba(26,24,20,0.12)] group-hover:bg-[#1A1814]/5'
-                      }`}
-                    >
-                      <ChevronDown size={20} />
-                    </motion.div>
-                  </div>
+                  {/* Icon */}
+                  <motion.div
+                    animate={{ rotate: isOpen ? 180 : 0 }}
+                    transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                    className={`p-1.5 rounded-full border transition-all duration-500 ${
+                      isOpen 
+                        ? 'border-[#F69A4F]/30 bg-[#F69A4F]/10 text-[#F69A4F]' 
+                        : 'border-transparent text-[#1A1814]/30'
+                    }`}
+                  >
+                    <ChevronDown size={18} />
+                  </motion.div>
                 </div>
 
-                {/* GSAP-Driven Accordion Panel content */}
-                <AccordionContent isOpen={isOpen}>
-                  <div className="pb-12 pt-2 px-6 md:px-12 lg:px-16">
-                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-                      
-                      {/* Left: Professional Concept Image */}
-                      <div className="lg:col-span-5 overflow-hidden rounded-xl border border-[rgba(26,24,20,0.06)] bg-[#EBE8E2] relative group/img aspect-[4/3] md:aspect-[16/10] lg:aspect-[4/5] shadow-[0_12px_32px_rgba(26,24,20,0.04)]">
-                        <img
-                          src={service.image}
-                          alt={service.name}
-                          className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover/img:scale-105"
-                          referrerPolicy="no-referrer"
-                        />
-                        {/* Subtle ambient shadow overlay */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-black-org/25 via-transparent to-transparent opacity-40 pointer-events-none" />
-                      </div>
-
-                      {/* Right: Informational Copy & Benefit List */}
-                      <div className="lg:col-span-7 flex flex-col justify-center">
+                {/* Accordion Drawer Content */}
+                <AnimatePresence initial={false}>
+                  {isOpen && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ 
+                        height: 'auto', 
+                        opacity: 1,
+                        transition: { height: { duration: 0.5 }, opacity: { duration: 0.35, delay: 0.1 } }
+                      }}
+                      exit={{ 
+                        height: 0, 
+                        opacity: 0,
+                        transition: { height: { duration: 0.4 }, opacity: { duration: 0.25 } }
+                      }}
+                      className="overflow-hidden"
+                    >
+                      <div className="pb-8 px-6 md:px-8 flex flex-col md:flex-row gap-6 items-start">
                         
-                        {/* Detailed Description */}
-                        <p className="font-interface text-base md:text-[1.05rem] leading-relaxed text-[#5A544F] font-light mb-8 max-w-2xl">
-                          {service.description}
-                        </p>
+                        {/* Service Miniature Image */}
+                        <div className="w-full md:w-44 aspect-[4/3] md:aspect-[3/4] rounded-xl overflow-hidden border border-[#1a1814]/5 shrink-0 bg-[#EBE8E2]">
+                          <img
+                            src={service.image}
+                            alt={service.name}
+                            className="w-full h-full object-cover"
+                            referrerPolicy="no-referrer"
+                          />
+                        </div>
 
-                        {/* Checklist of Benefits */}
-                        <div className="mb-8">
-                          <h4 className="font-interface text-xs tracking-[0.2em] uppercase font-semibold text-[#0E7281] mb-5">
-                            Diferenciais e Benefícios:
-                          </h4>
-                          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-3.5">
+                        {/* Service details and bullets */}
+                        <div className="flex-1">
+                          <p className="font-interface text-sm leading-relaxed text-[#5A544F] font-light mb-5">
+                            {service.description}
+                          </p>
+
+                          {/* Bullet Perks */}
+                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
                             {service.benefits.map((benefit, idx) => (
-                              <div key={idx} className="flex items-start gap-3">
-                                <span className="flex-shrink-0 w-5 h-5 rounded-full bg-[#0E7281]/10 flex items-center justify-center text-[#0E7281] mt-0.5">
-                                  <svg className="w-2.5 h-2.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="3">
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                                  </svg>
+                              <div key={idx} className="flex items-start gap-2">
+                                <span className="w-4 h-4 rounded-full bg-[#0E7281]/10 text-[#0E7281] flex items-center justify-center mt-0.5 text-[9px] font-bold">
+                                  ✓
                                 </span>
-                                <span className="font-interface text-[0.88rem] text-[#4E4944] font-light leading-snug">
+                                <span className="font-interface text-xs text-[#4E4944] font-light">
                                   {benefit}
                                 </span>
                               </div>
                             ))}
                           </div>
-                        </div>
 
-                        {/* Direct Assessment WhatsApp Booking CTA */}
-                        <div className="pt-2">
-                          <a
-                            href={`https://wa.me/5561983614547?text=${encodeURIComponent(service.whatsappText)}`}
-                            target="_blank"
-                            rel="noreferrer"
-                            className="group relative cta-shining glow-btn-orange inline-flex items-center gap-3 bg-[#0B0B0A] hover:bg-[#F69A4F] text-[#F4F1EC] hover:text-white-crm py-3.5 px-8 font-interface text-xs font-semibold uppercase tracking-[0.2em] transition-all duration-300 shadow-[0_12px_24px_rgba(11,11,10,0.06)] hover:shadow-[0_12px_32px_rgba(246,154,79,0.2)] hover:-translate-y-0.5"
-                            onClick={(e) => e.stopPropagation()}
-                          >
-                            <span>{service.ctaText}</span>
-                            <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform duration-300" />
-                          </a>
+                          {/* Action Booking Button */}
+                          <div>
+                            <a
+                              href={`https://wa.me/5561983614547?text=${encodeURIComponent(service.whatsappText)}`}
+                              target="_blank"
+                              rel="noreferrer"
+                              className="group inline-flex items-center gap-2.5 bg-[#0B0B0A] hover:bg-[#F69A4F] text-[#F4F1EC] hover:text-white py-2.5 px-6 font-interface text-[10px] font-semibold uppercase tracking-widest transition-all duration-300 rounded-lg shadow-sm"
+                              onClick={(e) => e.stopPropagation()}
+                            >
+                              <span>{service.ctaText}</span>
+                              <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform duration-300" />
+                            </a>
+                          </div>
                         </div>
 
                       </div>
-
-                    </div>
-                  </div>
-                </AccordionContent>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
             );
           })}
-
         </div>
-
       </div>
     </section>
   );

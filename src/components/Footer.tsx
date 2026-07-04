@@ -33,25 +33,25 @@ export default function Footer() {
     <footer className="w-full bg-black-org text-white-crm pt-16 pb-8 border-t border-line-sut select-none relative z-10">
       
       {/* Scroll to Top Trigger */}
-      <button
-        onClick={handleScrollToTop}
-        className="absolute -top-6 left-1/2 -translate-x-1/2 w-12 h-12 rounded-full border border-line-sut hover:border-accent-a bg-black-org flex items-center justify-center text-white-crm hover:text-accent-a transition-colors cursor-pointer group shadow-xl"
+      <a
+        href="#inicio"
+        className="absolute -top-6 left-1/2 -translate-x-1/2 w-12 h-12 rounded-full border border-line-sut hover:border-accent-a bg-black-org flex items-center justify-center text-white-crm hover:text-accent-a transition-colors cursor-pointer group shadow-xl z-20"
         aria-label="Ir para o Topo"
       >
         <ArrowUp size={18} className="group-hover:-translate-y-0.5 transition-transform" />
-      </button>
+      </a>
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-12 gap-12 mb-16">
         
         {/* Column 1: Logo + brand quote description */}
         <div className="md:col-span-5 flex flex-col items-start gap-4">
-          <div className="flex flex-col items-start gap-1">
-            <span className="text-[#76DDEF] font-display font-bold text-lg tracking-widest uppercase">Equilíbrio</span>
-            <div>
-              <span className="text-white text-[0.45rem] font-bold uppercase tracking-[0.2em] leading-none px-2 py-0.5 bg-[#F69A4F] rounded-[3px] inline-block">
-                Studio Pilates
-              </span>
-            </div>
+          <div className="flex items-baseline gap-2 md:gap-2.5">
+            <span className="font-display text-[1.75rem] md:text-[2.3rem] text-white-crm tracking-tight font-normal transition-colors duration-300 hover:text-accent-a leading-none">
+              Equilíbrio
+            </span>
+            <span className="font-interface text-[0.58rem] md:text-[0.65rem] tracking-[0.48em] uppercase text-white-crm/60 hover:text-accent-a/90 transition-colors duration-300 font-medium leading-none">
+              studio
+            </span>
           </div>
           <p className="font-interface text-xs text-muted-lbl max-w-sm mt-2 leading-relaxed">
             Nossa missão é restaurar a harmonia corporal através da precisão mecânica, respeito biológico e reabilitação de alta performance na Ponte Alta Norte do Gama, DF.
@@ -64,42 +64,42 @@ export default function Footer() {
             Navegação
           </div>
           <div className="grid grid-cols-2 gap-x-8 gap-y-2">
-            <button
-              onClick={() => handleLinkClick('#inicio')}
+            <a
+              href="#inicio"
               className="text-xs text-muted-lbl hover:text-white-crm transition-colors text-left font-light font-interface uppercase tracking-widest"
             >
               Início
-            </button>
-            <button
-              onClick={() => handleLinkClick('#sobre')}
+            </a>
+            <a
+              href="#sobre"
               className="text-xs text-muted-lbl hover:text-white-crm transition-colors text-left font-light font-interface uppercase tracking-widest"
             >
               Sobre
-            </button>
-            <button
-              onClick={() => handleLinkClick('#servicos')}
+            </a>
+            <a
+              href="#servicos"
               className="text-xs text-muted-lbl hover:text-white-crm transition-colors text-left font-light font-interface uppercase tracking-widest"
             >
               Pilates
-            </button>
-            <button
-              onClick={() => handleLinkClick('#servicos')}
+            </a>
+            <a
+              href="#servicos"
               className="text-xs text-muted-lbl hover:text-white-crm transition-colors text-left font-light font-interface uppercase tracking-widest"
             >
               Fisioterapia
-            </button>
-            <button
-              onClick={() => handleLinkClick('#servicos')}
+            </a>
+            <a
+              href="#servicos"
               className="text-xs text-muted-lbl hover:text-white-crm transition-colors text-left font-light font-interface uppercase tracking-widest"
             >
               Ginástica
-            </button>
-            <button
-              onClick={() => handleLinkClick('#contato')}
+            </a>
+            <a
+              href="#contato"
               className="text-xs text-muted-lbl hover:text-white-crm transition-colors text-left font-light font-interface uppercase tracking-widest"
             >
               Contato
-            </button>
+            </a>
           </div>
         </div>
 

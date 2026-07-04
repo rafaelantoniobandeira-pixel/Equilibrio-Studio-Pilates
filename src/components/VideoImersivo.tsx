@@ -5,114 +5,234 @@
 
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Play, X } from 'lucide-react';
+import { Play, X, Star, Award, Users, Heart } from 'lucide-react';
 import AnimatedTitle from './AnimatedTitle';
 
 export default function VideoImersivo() {
   const [isPlayingFull, setIsPlayingFull] = useState(false);
-  const mutedLoop = true;
   const videoRef = useRef<HTMLVideoElement>(null);
 
   const videoUrl = 'https://res.cloudinary.com/dxpwgum9x/video/upload/v1782417133/video_estudio_pilates_lc9jeo.mp4';
 
-  // Ensure native video element's muted state synchronizes reliably with React state changes
   useEffect(() => {
     if (videoRef.current) {
-      videoRef.current.muted = mutedLoop;
+      videoRef.current.muted = true;
+      videoRef.current.play().catch((err) => console.log('Autoplay blocked:', err));
     }
-  }, [mutedLoop]);
+  }, []);
 
   return (
-    <section className="relative w-full min-h-[75vh] md:min-h-[80vh] bg-black-org overflow-hidden select-none flex flex-col justify-center py-16 md:py-24">
-      
-      {/* Absolute high-design background, plays high-res aesthetic video under linear gradients */}
-      <div className="absolute inset-0 z-0">
-        <video
-          ref={videoRef}
-          src={videoUrl}
-          autoPlay
-          loop
-          muted={mutedLoop}
-          playsInline
-          className="absolute w-full h-full object-cover pointer-events-none brightness-[70%] scale-[1.01]"
-        />
-        {/* Soft linear overlays that frame the video and keep it balanced */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black-org via-black-org/40 to-black-org" />
-        <div className="absolute inset-0 bg-black-org/35" />
-      </div>
+    <section 
+      id="video-institucional"
+      className="relative w-full bg-[#FAF8F5] py-24 md:py-32 overflow-hidden select-none text-[#1A1814]"
+      style={{
+        background: 'linear-gradient(to bottom, #FAF8F5, #F4F1EC)'
+      }}
+    >
+      {/* Background abstract decorations for premium editorial feel */}
+      <div className="absolute top-[20%] -left-[10%] w-[40%] aspect-square rounded-full bg-[#F69A4F]/[0.015] blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-[20%] -right-[10%] w-[40%] aspect-square rounded-full bg-[#F69A4F]/[0.015] blur-[120px] pointer-events-none" />
 
-      {/* Main Overlay contents */}
-      <div className="absolute inset-0 z-10 flex flex-col justify-between p-12 md:p-16 max-w-7xl mx-auto items-center">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         
-        {/* Empty space on top to push things down */}
-        <div />
-
-        {/* Big Interactive circular Play Button */}
-        <motion.button
-          whileHover={{ scale: 1.12 }}
-          whileTap={{ scale: 0.95 }}
-          onClick={() => setIsPlayingFull(true)}
-          className="w-20 h-20 rounded-full border border-white-crm/40 hover:border-accent-a flex items-center justify-center text-white-crm hover:text-accent-a bg-black-org/50 backdrop-blur-md cursor-pointer transition-colors duration-300 relative group"
-          aria-label="Abrir Vídeo Institucional"
-        >
-          {/* Subtle outer ripple rings */}
-          <span className="absolute inset-0 rounded-full border border-accent-a/30 animate-ping group-hover:block hidden" />
-          <Play size={24} className="fill-current transform translate-x-0.5" />
-        </motion.button>
-
-        {/* Text descriptions anchored below the clip framing */}
-        <div className="text-center flex flex-col items-center gap-3">
-          <span className="label-eyebrow text-accent-a/90">CONHEÇA O NOSSO ESPAÇO</span>
-          <AnimatedTitle className="text-display-md text-white-crm font-light italic leading-none">
-            "Um refúgio para <br />
-            <span className="font-sans not-italic text-white-crm/80 font-extralight">recuperar o equilíbrio duradouro."</span>
+        {/* Editorial Section Header */}
+        <div className="flex flex-col items-center justify-center text-center mb-16 gap-3">
+          <div className="flex items-center gap-2 mb-1">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#F69A4F]" />
+            <span className="label-eyebrow tracking-[0.25em] text-[0.68rem] font-bold text-[#F69A4F] uppercase">
+              04 / ATMOSFERA E PRÁTICA
+            </span>
+          </div>
+          <AnimatedTitle className="text-display-md text-[#1A1814] italic font-light leading-[1.15] tracking-tight max-w-2xl">
+            Sinta a experiência <br />
+            <span className="font-sans not-italic text-[#1A1814]/90 font-extralight">do nosso espaço</span>
           </AnimatedTitle>
+          <p className="font-interface text-sm md:text-base leading-relaxed text-[#5A544F] font-light max-w-2xl mt-2">
+            Explore em movimento o carinho, a precisão e o acolhimento que preparamos para receber você em cada sessão.
+          </p>
+        </div>
+
+        {/* 70-80% Width Video Container with Glassmorphism Play Button */}
+        <div className="w-full max-w-5xl mx-auto flex justify-center items-center">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-100px' }}
+            transition={{ duration: 0.95, ease: [0.16, 1, 0.3, 1] }}
+            onClick={() => setIsPlayingFull(true)}
+            className="w-full aspect-[16/9] rounded-[24px] md:rounded-[40px] overflow-hidden shadow-[0_25px_65px_rgba(26,24,20,0.16)] border border-[#1A1814]/10 relative group cursor-pointer bg-[#FAF8F5]"
+          >
+            {/* Ambient muted loop background video */}
+            <video
+              ref={videoRef}
+              src={videoUrl}
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="w-full h-full object-cover transition-transform duration-[1.2s] group-hover:scale-[1.03] pointer-events-none"
+              referrerPolicy="no-referrer"
+            />
+
+            {/* Subtly reduced dark overlay for high brightness & welcoming environment */}
+            <div className="absolute inset-0 bg-black/15 group-hover:bg-black/10 transition-colors duration-500" />
+            
+            {/* Top Right "Vídeo Completo" subtle tag */}
+            <div className="absolute top-6 right-6 bg-white/20 backdrop-blur-md border border-white/30 text-white font-mono text-[9px] font-semibold tracking-widest uppercase px-3.5 py-1.5 rounded-full shadow-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              Vídeo Completo
+            </div>
+
+            {/* Center Play Button with stunning Glassmorphism style */}
+            <div className="absolute inset-0 flex items-center justify-center">
+              <motion.div
+                whileHover={{ scale: 1.08 }}
+                whileTap={{ scale: 0.94 }}
+                className="w-20 h-20 md:w-26 md:h-26 rounded-full bg-white/15 hover:bg-white/25 text-white border border-white/45 backdrop-blur-md shadow-[0_15px_35px_rgba(0,0,0,0.15)] flex items-center justify-center transition-all duration-300 group-hover:shadow-[0_20px_45px_rgba(246,154,79,0.22)]"
+              >
+                {/* Rippling glass outer ring */}
+                <span className="absolute inset-0 rounded-full border border-white/30 animate-pulse" />
+                <span className="absolute -inset-3 rounded-full border border-white/5 group-hover:scale-110 transition-transform duration-500 pointer-events-none" />
+                
+                <Play size={26} className="fill-current text-white transform translate-x-0.5 transition-transform group-hover:scale-110" />
+              </motion.div>
+            </div>
+
+            {/* Video lower card styling indicator */}
+            <div className="absolute bottom-6 left-6 md:bottom-10 md:left-10 text-white-crm z-10 pointer-events-none max-w-md">
+              <span className="font-mono text-[0.58rem] tracking-[0.3em] uppercase text-[#F69A4F] font-bold block mb-1">
+                Acolhimento de Alta Performance
+              </span>
+              <span className="font-display italic text-lg md:text-xl text-white/90 block font-light leading-tight">
+                Um espaço planejado para a sua reabilitação física.
+              </span>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Editorial Highlight Quote Below Video */}
+        <div className="text-center max-w-4xl mx-auto mt-20 px-6">
+          <motion.p
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.9, delay: 0.2 }}
+            className="font-display italic text-2xl md:text-3xl lg:text-4xl text-[#1A1814]/90 font-light leading-relaxed tracking-tight"
+          >
+            "O movimento consciente <span className="text-[#F69A4F] font-medium">reabilita o corpo</span>, acalma a mente e devolve a <span className="text-[#F69A4F] font-medium">autonomia</span> para a sua vida."
+          </motion.p>
+          <motion.div 
+            initial={{ width: 0 }}
+            whileInView={{ width: '80px' }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="h-[1.5px] bg-[#F69A4F]/40 mx-auto mt-10" 
+          />
+        </div>
+
+        {/* Discrete & Elegant Credibility Metrics */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 max-w-5xl mx-auto mt-16 px-6 relative">
+          
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.1 }}
+            className="flex flex-col items-center md:items-start text-center md:text-left bg-white/45 p-6 md:p-8 rounded-2xl border border-[#1A1814]/10 shadow-sm hover:shadow-md transition-shadow duration-300"
+          >
+            <div className="w-10 h-10 rounded-full bg-[#F69A4F]/10 flex items-center justify-center text-[#F69A4F] mb-4">
+              <Users size={18} />
+            </div>
+            <h4 className="font-display text-2xl md:text-3xl text-[#1A1814] font-medium mb-1">
+              500+ Alunos
+            </h4>
+            <p className="font-interface text-xs md:text-sm text-[#4D4844] leading-relaxed font-normal">
+              Atendidos com cuidado individualizado e diagnósticos biomecânicos minuciosos para alívio de lesões.
+            </p>
+          </motion.div>
+
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+            className="flex flex-col items-center md:items-start text-center md:text-left bg-white/45 p-6 md:p-8 rounded-2xl border border-[#1A1814]/10 shadow-sm hover:shadow-md transition-shadow duration-300"
+          >
+            <div className="w-10 h-10 rounded-full bg-[#F69A4F]/10 flex items-center justify-center text-[#F69A4F] mb-4">
+              <Award size={18} />
+            </div>
+            <h4 className="font-display text-2xl md:text-3xl text-[#F69A4F] font-medium mb-1">
+              5+ Anos
+            </h4>
+            <p className="font-interface text-xs md:text-sm text-[#4D4844] leading-relaxed font-normal">
+              De dedicação científica, aperfeiçoamento constante e carinho com cada queixa ou limitação física.
+            </p>
+          </motion.div>
+
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.3 }}
+            className="flex flex-col items-center md:items-start text-center md:text-left bg-white/45 p-6 md:p-8 rounded-2xl border border-[#1A1814]/10 shadow-sm hover:shadow-md transition-shadow duration-300"
+          >
+            <div className="w-10 h-10 rounded-full bg-[#1A1814]/10 flex items-center justify-center text-[#1A1814] mb-4">
+              <div className="flex gap-0.5 text-[#F69A4F]">
+                <Star size={16} className="fill-current" />
+              </div>
+            </div>
+            <h4 className="font-display text-2xl md:text-3xl text-[#1A1814] font-medium mb-1">
+              Nota 5.0 Google
+            </h4>
+            <p className="font-interface text-xs md:text-sm text-[#4D4844] leading-relaxed font-normal">
+              100% de satisfação com depoimentos reais que atestam a qualidade, o silêncio e o respeito da nossa equipe.
+            </p>
+          </motion.div>
+
         </div>
 
       </div>
 
-      {/* EXPANDED FULLSCREEN PLAYER MODAL */}
+      {/* FULLSCREEN ACCESSIBLE CINEMATIC PLAYER MODAL */}
       <AnimatePresence>
         {isPlayingFull && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black-org/98 backdrop-blur-lg z-[110] flex flex-col justify-center items-center p-4 md:p-12"
+            className="fixed inset-0 bg-black/95 backdrop-blur-md z-[110] flex flex-col justify-center items-center p-4 md:p-12"
             onClick={() => setIsPlayingFull(false)}
           >
-            {/* Header controls inside expanded video */}
-            <div className="absolute top-6 right-6 z-[120] flex items-center gap-4">
+            {/* Top header controls */}
+            <div className="absolute top-6 right-6 z-[120]">
               <button
                 onClick={() => setIsPlayingFull(false)}
-                className="text-white-crm/60 hover:text-white-crm hover:border-white-crm/40 p-3 border border-white-crm/10 rounded-full transition-colors cursor-pointer"
+                className="text-white/60 hover:text-white p-3 border border-white/10 hover:border-white/40 rounded-full transition-colors cursor-pointer"
                 aria-label="Voltar para a Navegação"
               >
-                <X size={22} />
+                <X size={20} />
               </button>
             </div>
 
-            {/* Video Box adjusted to 9:16 vertical cinema layout */}
+            {/* Video Frame */}
             <motion.div
-              initial={{ scale: 0.9, y: 30 }}
+              initial={{ scale: 0.92, y: 20 }}
               animate={{ scale: 1, y: 0 }}
-              exit={{ scale: 0.9, y: 30 }}
-              transition={{ type: 'spring', damping: 30 }}
+              exit={{ scale: 0.92, y: 20 }}
+              transition={{ type: 'spring', damping: 28 }}
               onClick={(e) => e.stopPropagation()}
-              className="w-full max-w-[420px] rounded-lg aspect-[9/16] max-h-[82vh] overflow-hidden border border-line-sut/40 shadow-2xl relative bg-black"
+              className="w-full max-w-[420px] rounded-[24px] aspect-[9/16] max-h-[82vh] overflow-hidden border border-white/10 shadow-2xl relative bg-black"
             >
               <video
                 src={videoUrl}
                 autoPlay
-                muted
                 controls
                 playsInline
                 className="w-full h-full object-cover bg-black"
               />
             </motion.div>
 
-            <p className="text-muted-lbl text-xs mt-6 uppercase tracking-[0.25em] font-interface text-center">
-              Assista ao vídeo e conheça nosso espaço de prática e cuidado.
+            <p className="text-white/40 text-xs mt-6 uppercase tracking-[0.25em] font-interface text-center">
+              Equilíbrio Studio — Toque para silenciar ou controlar o reprodutor.
             </p>
           </motion.div>
         )}
