@@ -51,7 +51,7 @@ export default function Sobre() {
         {/* Left Side: 60% viewport editorial photograph, bleed layout */}
         <div className="lg:col-span-7 relative group select-none w-full">
           {/* Outer container holding picture with stable aspect ratio */}
-          <div className="overflow-hidden w-full aspect-[3/4] md:aspect-[4/5] lg:aspect-[3/4] max-h-[720px] border border-line-sut rounded-sm relative bg-[#EBE5DB]">
+          <div className="overflow-hidden w-full aspect-[2/3] md:aspect-[3/4] lg:aspect-[2/3] max-h-[850px] border border-line-sut rounded-sm relative bg-[#EBE5DB]">
             
             {/* Shimmer / Skeleton Loader */}
             {imgState === 'loading' && (
