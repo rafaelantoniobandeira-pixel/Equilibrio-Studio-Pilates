@@ -111,13 +111,15 @@ export default function Header({ isIntroActive = false }: HeaderProps) {
                 transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
                 className="flex items-center select-none"
               >
-                <div className="flex items-baseline gap-2 md:gap-2.5">
-                  <span className="font-display text-[1.75rem] md:text-[2.3rem] text-white-crm tracking-tight font-normal transition-colors duration-300 group-hover:text-accent-a leading-none">
-                    Equilíbrio
-                  </span>
-                  <span className="font-interface text-[0.58rem] md:text-[0.65rem] tracking-[0.48em] uppercase text-white-crm/60 group-hover:text-accent-a/90 transition-colors duration-300 font-medium leading-none">
-                    studio
-                  </span>
+                <div className="flex items-center">
+                  <div className={`relative overflow-hidden ${scrolled ? 'h-11 md:h-13 lg:h-15' : 'h-18 md:h-22 lg:h-26'} w-[180px] md:w-[240px] lg:w-[280px] flex items-center justify-center`}>
+                    <img 
+                      src="https://res.cloudinary.com/dxpwgum9x/image/upload/v1783109457/WhatsApp_Image_2026-06-04_at_14.23.49_ebpyof.png" 
+                      alt="Equilíbrio Studio Logo" 
+                      className="absolute h-[280%] w-auto max-w-none object-contain top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transition-transform duration-300 group-hover:scale-105"
+                      referrerPolicy="no-referrer"
+                    />
+                  </div>
                 </div>
               </motion.div>
             </a>

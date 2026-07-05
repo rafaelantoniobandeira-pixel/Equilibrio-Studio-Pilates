@@ -17,6 +17,7 @@ import Footer from './components/Footer';
 import SmoothScroll from './components/SmoothScroll';
 import IntroLoader from './components/IntroLoader';
 import CustomCursor from './components/CustomCursor';
+import FloatingWhatsApp from './components/FloatingWhatsApp';
 
 export default function App() {
   const [isIntroActive, setIsIntroActive] = useState(true);
@@ -73,6 +74,9 @@ export default function App() {
 
       {/* 11. Footer credits and link menus */}
       <Footer />
+
+      {/* Floating WhatsApp Contact Button */}
+      <FloatingWhatsApp />
 
     </div>
   );

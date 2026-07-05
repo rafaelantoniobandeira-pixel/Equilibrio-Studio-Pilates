@@ -45,13 +45,15 @@ export default function Footer() {
         
         {/* Column 1: Logo + brand quote description */}
         <div className="md:col-span-5 flex flex-col items-start gap-4">
-          <div className="flex items-baseline gap-2 md:gap-2.5">
-            <span className="font-display text-[1.75rem] md:text-[2.3rem] text-white-crm tracking-tight font-normal transition-colors duration-300 hover:text-accent-a leading-none">
-              Equilíbrio
-            </span>
-            <span className="font-interface text-[0.58rem] md:text-[0.65rem] tracking-[0.48em] uppercase text-white-crm/60 hover:text-accent-a/90 transition-colors duration-300 font-medium leading-none">
-              studio
-            </span>
+          <div className="flex items-center group cursor-pointer">
+            <div className="relative overflow-hidden h-18 md:h-22 lg:h-26 w-[180px] md:w-[240px] lg:w-[280px] flex items-center justify-center">
+              <img 
+                src="https://res.cloudinary.com/dxpwgum9x/image/upload/v1783109457/WhatsApp_Image_2026-06-04_at_14.23.49_ebpyof.png" 
+                alt="Equilíbrio Studio Logo" 
+                className="absolute h-[280%] w-auto max-w-none object-contain top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transition-transform duration-300 group-hover:scale-105"
+                referrerPolicy="no-referrer"
+              />
+            </div>
           </div>
           <p className="font-interface text-xs text-muted-lbl max-w-sm mt-2 leading-relaxed">
             Nossa missão é restaurar a harmonia corporal através da precisão mecânica, respeito biológico e reabilitação de alta performance na Ponte Alta Norte do Gama, DF.
@@ -130,6 +132,16 @@ export default function Footer() {
           </div>
         </div>
 
+      </div>
+
+      {/* SEO Text Block */}
+      <div className="max-w-7xl mx-auto px-6 md:px-12 mb-12 text-left">
+        <h4 className="font-display text-sm text-[#FAF8F5]/50 font-medium tracking-wider mb-3">
+          O Estúdio | Pilates no Gama-DF
+        </h4>
+        <p className="font-interface text-[11px] leading-relaxed text-muted-lbl/50 font-normal max-w-4xl normal-case">
+          O Equilíbrio Studio Pilates é a principal referência de <strong className="text-[#FAF8F5]/70 font-semibold">pilates no Gama</strong>, localizado na Ponte Alta Norte do Gama-DF. Fundado e dirigido pela fisioterapeuta Priscilla, nosso <strong className="text-[#FAF8F5]/70 font-semibold">estúdio de pilates</strong> oferece um ambiente acolhedor e altamente técnico. Desenvolvemos <strong className="text-[#FAF8F5]/70 font-semibold">aulas de pilates Gama-DF</strong> com foco especial em <strong className="text-[#FAF8F5]/70 font-semibold">pilates clínico</strong> e <strong className="text-[#FAF8F5]/70 font-semibold">reabilitação postural</strong>, auxiliando no tratamento de lesões e oferecendo programas de <strong className="text-[#FAF8F5]/70 font-semibold">pilates para dor nas costas</strong>, hérnia de disco e escoliose. Nosso estúdio é ideal tanto para o público de <strong className="text-[#FAF8F5]/70 font-semibold">pilates para iniciantes</strong>, que começam a se exercitar de forma segura, quanto para quem busca o <strong className="text-[#FAF8F5]/70 font-semibold">fortalecimento do core</strong>, ganho de mobilidade e vitalidade geral. Através de <strong className="text-[#FAF8F5]/70 font-semibold">aulas em grupo reduzido</strong>, asseguramos acompanhamento individualizado de excelência. Agende uma avaliação detalhada e mude sua vida pelo movimento consciente.
+        </p>
       </div>
 
       {/* Divider fine line separator */}

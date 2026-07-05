@@ -6,6 +6,7 @@
 import { useEffect, useState, useRef } from 'react';
 import { motion, useInView } from 'motion/react';
 import AnimatedTitle from './AnimatedTitle';
+import ProfileCard from './ProfileCard';
 
 function Counter({ value, suffix = '' }: { value: number; suffix?: string }) {
   const [count, setCount] = useState(0);
@@ -42,8 +43,6 @@ function Counter({ value, suffix = '' }: { value: number; suffix?: string }) {
 }
 
 export default function Sobre() {
-  const [imgState, setImgState] = useState<'loading' | 'success' | 'error'>('loading');
-
   return (
     <section 
       id="sobre" 
@@ -63,55 +62,25 @@ export default function Sobre() {
         {/* Left Side: Significant larger photo of Priscilla, bleeding and overflowing the boundaries */}
         <div className="lg:col-span-7 relative group select-none w-full flex flex-col md:flex-row gap-6 items-stretch">
           
-          {/* Main Visual Frame with bleeding overflow and bottom fade */}
+          {/* Main Visual Frame with 3D Profile Card effect */}
           <div className="relative flex-1">
             {/* Elegant architectural organic arch backplate */}
             <div className="absolute -inset-4 bg-[#EBE5DB]/60 rounded-[40px] -rotate-1 pointer-events-none transition-transform duration-700 group-hover:rotate-0" />
             
-            {/* Image mask with a sophisticated rounded shape and bleeding overflow */}
-            <div className="overflow-visible w-full aspect-[2/3] md:aspect-[3/4] lg:aspect-[2/3] max-h-[880px] rounded-[32px] border border-[#1A1814]/10 relative bg-[#EBE5DB] shadow-2xl transition-all duration-700 hover:shadow-[0_45px_90px_rgba(26,24,20,0.15)] overflow-hidden">
-              
-              {/* Shimmer / Skeleton Loader */}
-              {imgState === 'loading' && (
-                <div className="absolute inset-0 flex flex-col items-center justify-center bg-[#E6DEC1]/10 animate-pulse z-10">
-                  <div className="w-8 h-8 rounded-full border-2 border-accent-a/30 border-t-accent-a animate-spin mb-3" />
-                  <span className="font-interface text-[11px] uppercase tracking-widest text-[#6B6560] font-light">
-                    Carregando imagem...
-                  </span>
-                </div>
-              )}
-
-              {/* Error Fallback Layout */}
-              {imgState === 'error' && (
-                <div className="absolute inset-0 flex flex-col items-center justify-center p-8 text-center bg-[#E5DFD5] z-10">
-                  <span className="text-accent-a font-display italic text-3xl mb-4">Equilíbrio</span>
-                  <span className="font-interface text-sm text-[#1A1814]/80 max-w-xs font-light">
-                    Priscilla — Fisioterapeuta e Instrutora de Pilates
-                  </span>
-                </div>
-              )}
-
-              <motion.img
-                initial={{ scale: 1.05, filter: 'grayscale(0.2)', opacity: 0 }}
-                animate={{ 
-                  scale: imgState === 'success' ? 1 : 1.05,
-                  filter: imgState === 'success' ? 'grayscale(0)' : 'grayscale(0.2)',
-                  opacity: imgState === 'success' ? 1 : 0
-                }}
-                transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-                src="https://res.cloudinary.com/dxpwgum9x/image/upload/v1782415872/WhatsApp_Image_2026-06-04_at_14.23.49_2_dxivux.jpg"
-                alt="Priscilla sorrindo de forma acolhedora no Equilíbrio Studio Pilates"
-                className="w-full h-full object-cover object-center transform hover:scale-[1.03] transition-transform duration-1000 block"
-                referrerPolicy="no-referrer"
-                onLoad={() => setImgState('success')}
-                onError={() => setImgState('error')}
-                loading="eager"
-                decoding="async"
-              />
-
-              {/* Premium fade gradient at the bottom to blend her into the background color (cutout simulation) */}
-              <div className="absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-[#F4F1EC] via-[#F4F1EC]/40 to-transparent pointer-events-none" />
-            </div>
+            <ProfileCard
+              avatarUrl="https://res.cloudinary.com/dxpwgum9x/image/upload/v1782415872/WhatsApp_Image_2026-06-04_at_14.23.49_2_dxivux.jpg"
+              name="Priscilla"
+              title="Fisioterapeuta e Instrutora"
+              handle="equilibrio_studio"
+              status="Disponível para avaliação"
+              contactText="Agendar"
+              behindGlowEnabled={true}
+              behindGlowColor="rgba(212, 178, 111, 0.45)"
+              innerGradient="linear-gradient(145deg, rgba(15, 44, 65, 0.95) 0%, rgba(26, 24, 20, 0.98) 100%)"
+              onContactClick={() => {
+                window.open('https://wa.me/5561983614547?text=Olá!%20Gostaria%20de%20agendar%20uma%20conversa%20com%20a%20Priscilla.', '_blank');
+              }}
+            />
 
             {/* Fine crosshairs decoration for premium editorial feel */}
             <div className="absolute -top-3 -left-3 w-6 h-6 border-t border-l border-accent-a/35" />
@@ -119,20 +88,20 @@ export default function Sobre() {
           </div>
 
           {/* Integrated Statistics: Placed vertically right beside the image to create a strong visual hierarchy */}
-          <div className="flex md:flex-col justify-between md:justify-center gap-4 lg:gap-6 mt-4 md:mt-0 md:w-48 lg:w-56 shrink-0 relative z-20">
+          <div className="flex md:flex-col justify-between md:justify-center gap-2.5 sm:gap-4 lg:gap-6 mt-4 md:mt-0 md:w-48 lg:w-56 shrink-0 relative z-20 w-full">
             <motion.div 
               initial={{ opacity: 0, x: -15 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.1 }}
-              className="flex-1 bg-[#FAF8F5]/85 backdrop-blur-md p-5 border border-line-sut rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 flex flex-col justify-between"
+              className="flex-1 bg-[#FAF8F5]/85 backdrop-blur-md p-3 sm:p-5 border border-line-sut rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 flex flex-col justify-between min-w-0"
             >
-              <div className="flex items-center gap-1.5 text-accent-a font-mono text-[0.62rem] tracking-widest uppercase mb-1">
+              <div className="flex items-center gap-1 sm:gap-1.5 text-accent-a font-mono text-[0.55rem] sm:text-[0.62rem] tracking-wider sm:tracking-widest uppercase mb-1">
                 <span className="w-1 h-1 rounded-full bg-accent-a animate-pulse" />
                 Tempo
               </div>
               <Counter value={5} suffix="+" />
-              <span className="font-interface text-[0.68rem] uppercase tracking-wider text-[#6B6560] font-medium mt-2 leading-tight">
+              <span className="font-interface text-[0.58rem] sm:text-[0.68rem] uppercase tracking-wider text-[#6B6560] font-medium mt-1 sm:mt-2 leading-tight">
                 Anos de estúdio
               </span>
             </motion.div>
@@ -142,14 +111,14 @@ export default function Sobre() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="flex-1 bg-[#FAF8F5]/85 backdrop-blur-md p-5 border border-line-sut rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 flex flex-col justify-between"
+              className="flex-1 bg-[#FAF8F5]/85 backdrop-blur-md p-3 sm:p-5 border border-line-sut rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 flex flex-col justify-between min-w-0"
             >
-              <div className="flex items-center gap-1.5 text-[#0E7281] font-mono text-[0.62rem] tracking-widest uppercase mb-1">
+              <div className="flex items-center gap-1 sm:gap-1.5 text-[#0E7281] font-mono text-[0.55rem] sm:text-[0.62rem] tracking-wider sm:tracking-widest uppercase mb-1">
                 <span className="w-1 h-1 rounded-full bg-[#0E7281]" />
                 Comunidade
               </div>
               <Counter value={500} suffix="+" />
-              <span className="font-interface text-[0.68rem] uppercase tracking-wider text-[#6B6560] font-medium mt-2 leading-tight">
+              <span className="font-interface text-[0.58rem] sm:text-[0.68rem] uppercase tracking-wider text-[#6B6560] font-medium mt-1 sm:mt-2 leading-tight">
                 Alunos atendidos
               </span>
             </motion.div>
@@ -159,14 +128,14 @@ export default function Sobre() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="flex-1 bg-[#FAF8F5]/85 backdrop-blur-md p-5 border border-line-sut rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 flex flex-col justify-between"
+              className="flex-1 bg-[#FAF8F5]/85 backdrop-blur-md p-3 sm:p-5 border border-line-sut rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 flex flex-col justify-between min-w-0"
             >
-              <div className="flex items-center gap-1.5 text-accent-a font-mono text-[0.62rem] tracking-widest uppercase mb-1">
+              <div className="flex items-center gap-1 sm:gap-1.5 text-accent-a font-mono text-[0.55rem] sm:text-[0.62rem] tracking-wider sm:tracking-widest uppercase mb-1">
                 <span className="w-1 h-1 rounded-full bg-accent-a" />
                 Diferenciais
               </div>
               <Counter value={3} />
-              <span className="font-interface text-[0.68rem] uppercase tracking-wider text-[#6B6560] font-medium mt-2 leading-tight">
+              <span className="font-interface text-[0.58rem] sm:text-[0.68rem] uppercase tracking-wider text-[#6B6560] font-medium mt-1 sm:mt-2 leading-tight">
                 Especialidades
               </span>
             </motion.div>

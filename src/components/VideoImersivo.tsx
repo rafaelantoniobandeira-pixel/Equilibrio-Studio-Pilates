@@ -7,10 +7,12 @@ import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Play, X, Star, Award, Users, Heart } from 'lucide-react';
 import AnimatedTitle from './AnimatedTitle';
+import { InteractiveMetricCard } from './InteractiveMetricCard';
 
 export default function VideoImersivo() {
   const [isPlayingFull, setIsPlayingFull] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [isMobile, setIsMobile] = useState(false);
 
   const videoUrl = 'https://res.cloudinary.com/dxpwgum9x/video/upload/v1782417133/video_estudio_pilates_lc9jeo.mp4';
 
@@ -19,6 +21,15 @@ export default function VideoImersivo() {
       videoRef.current.muted = true;
       videoRef.current.play().catch((err) => console.log('Autoplay blocked:', err));
     }
+  }, []);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   return (
@@ -129,65 +140,37 @@ export default function VideoImersivo() {
           />
         </div>
 
-        {/* Discrete & Elegant Credibility Metrics */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 max-w-5xl mx-auto mt-16 px-6 relative">
-          
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.1 }}
-            className="flex flex-col items-center md:items-start text-center md:text-left bg-white/45 p-6 md:p-8 rounded-2xl border border-[#1A1814]/10 shadow-sm hover:shadow-md transition-shadow duration-300"
-          >
-            <div className="w-10 h-10 rounded-full bg-[#F69A4F]/10 flex items-center justify-center text-[#F69A4F] mb-4">
-              <Users size={18} />
-            </div>
-            <h4 className="font-display text-2xl md:text-3xl text-[#1A1814] font-medium mb-1">
-              500+ Alunos
-            </h4>
-            <p className="font-interface text-xs md:text-sm text-[#4D4844] leading-relaxed font-normal">
-              Atendidos com cuidado individualizado e diagnósticos biomecânicos minuciosos para alívio de lesões.
-            </p>
-          </motion.div>
-
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            className="flex flex-col items-center md:items-start text-center md:text-left bg-white/45 p-6 md:p-8 rounded-2xl border border-[#1A1814]/10 shadow-sm hover:shadow-md transition-shadow duration-300"
-          >
-            <div className="w-10 h-10 rounded-full bg-[#F69A4F]/10 flex items-center justify-center text-[#F69A4F] mb-4">
-              <Award size={18} />
-            </div>
-            <h4 className="font-display text-2xl md:text-3xl text-[#F69A4F] font-medium mb-1">
-              5+ Anos
-            </h4>
-            <p className="font-interface text-xs md:text-sm text-[#4D4844] leading-relaxed font-normal">
-              De dedicação científica, aperfeiçoamento constante e carinho com cada queixa ou limitação física.
-            </p>
-          </motion.div>
-
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.3 }}
-            className="flex flex-col items-center md:items-start text-center md:text-left bg-white/45 p-6 md:p-8 rounded-2xl border border-[#1A1814]/10 shadow-sm hover:shadow-md transition-shadow duration-300"
-          >
-            <div className="w-10 h-10 rounded-full bg-[#1A1814]/10 flex items-center justify-center text-[#1A1814] mb-4">
-              <div className="flex gap-0.5 text-[#F69A4F]">
-                <Star size={16} className="fill-current" />
-              </div>
-            </div>
-            <h4 className="font-display text-2xl md:text-3xl text-[#1A1814] font-medium mb-1">
-              Nota 5.0 Google
-            </h4>
-            <p className="font-interface text-xs md:text-sm text-[#4D4844] leading-relaxed font-normal">
-              100% de satisfação com depoimentos reais que atestam a qualidade, o silêncio e o respeito da nossa equipe.
-            </p>
-          </motion.div>
-
+        {/* Discrete & Elegant Credibility Metrics - Fully 3D Interactive Grid */}
+        <div className="max-w-6xl mx-auto mt-16 px-6 w-full relative z-20">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full justify-center">
+            <InteractiveMetricCard
+              numberText="500+"
+              label="Alunos Atendidos"
+              description="Atendidos com cuidado individualizado e diagnósticos biomecânicos minuciosos para alívio de lesões."
+              subLabel="Gama - DF"
+              icon={<Users size={24} />}
+            />
+            <InteractiveMetricCard
+              numberText="5+ Anos"
+              label="Experiência Clínica"
+              description="De dedicação científica, aperfeiçoamento constante e carinho com cada queixa ou limitação física."
+              subLabel="Estúdio de Excelência"
+              icon={<Award size={24} />}
+              iconColorClass="text-[#FAF8F5] dark:text-[#FAF8F5]"
+              accentBgClass="bg-[#F69A4F]"
+            />
+            <InteractiveMetricCard
+              numberText="5.0"
+              label="Nota Máxima no Google"
+              description="100% de satisfação com depoimentos reais que atestam a qualidade, o silêncio e o respeito da nossa equipe."
+              subLabel="Avaliações Reais"
+              icon={
+                <div className="flex gap-0.5 text-[#F69A4F]">
+                  <Star size={20} className="fill-current" />
+                </div>
+              }
+            />
+          </div>
         </div>
 
       </div>
