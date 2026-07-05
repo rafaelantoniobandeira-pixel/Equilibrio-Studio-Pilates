@@ -94,11 +94,11 @@ export default function Header({ isIntroActive = false }: HeaderProps) {
           visible ? 'translate-y-0' : '-translate-y-full'
         } ${
           scrolled
-            ? 'bg-black-org/95 backdrop-blur-xl border-b border-white/[0.06] py-4 shadow-[0_12px_40px_-12px_rgba(0,0,0,0.75)]'
+            ? 'bg-[#1A1814] border-b border-[#FAF8F5]/10 py-4 shadow-[0_12px_40px_-12px_rgba(0,0,0,0.9)]'
             : 'bg-transparent py-8 border-b border-transparent'
         }`}
       >
-        <div className="w-full max-w-none px-6 md:px-16 lg:px-24 flex items-center justify-between lg:grid lg:grid-cols-3">
+        <div className="w-full max-w-none px-6 md:px-16 lg:px-24 flex items-center justify-between xl:grid xl:grid-cols-3">
           {/* Logo Column */}
           <div className="flex justify-start">
             <a
@@ -139,7 +139,7 @@ export default function Header({ isIntroActive = false }: HeaderProps) {
                 }
               }
             }}
-            className="hidden lg:flex items-center justify-center gap-10 col-span-1"
+            className="hidden xl:flex items-center justify-center gap-10 col-span-1"
           >
             {menuItems.map((item) => {
               const isActive = activeSection === item.href;
@@ -169,7 +169,7 @@ export default function Header({ isIntroActive = false }: HeaderProps) {
             {/* Mobile Hamburguer button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden text-white-crm focus:outline-none p-1.5 border border-line-sut hover:border-accent-a/50 transition-colors"
+              className="xl:hidden text-white-crm focus:outline-none p-1.5 border border-line-sut hover:border-accent-a/50 transition-colors"
               aria-label="Toggle Menu"
             >
               {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
@@ -186,7 +186,7 @@ export default function Header({ isIntroActive = false }: HeaderProps) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.4 }}
-            className="fixed inset-0 bg-black-org z-40 lg:hidden flex flex-col justify-between p-8 pt-32"
+            className="fixed inset-0 bg-black-org z-40 xl:hidden flex flex-col justify-between p-8 pt-32"
           >
             {/* Background pattern */}
             <div className="absolute inset-0 opacity-[0.02] pointer-events-none overflow-hidden">

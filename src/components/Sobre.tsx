@@ -63,28 +63,37 @@ export default function Sobre() {
         <div className="lg:col-span-7 relative group select-none w-full flex flex-col md:flex-row gap-6 items-stretch">
           
           {/* Main Visual Frame with 3D Profile Card effect */}
-          <div className="relative flex-1">
-            {/* Elegant architectural organic arch backplate */}
-            <div className="absolute -inset-4 bg-[#EBE5DB]/60 rounded-[40px] -rotate-1 pointer-events-none transition-transform duration-700 group-hover:rotate-0" />
-            
-            <ProfileCard
-              avatarUrl="https://res.cloudinary.com/dxpwgum9x/image/upload/v1782415872/WhatsApp_Image_2026-06-04_at_14.23.49_2_dxivux.jpg"
-              name="Priscilla"
-              title="Fisioterapeuta e Instrutora"
-              handle="equilibrio_studio"
-              status="Disponível para avaliação"
-              contactText="Agendar"
-              behindGlowEnabled={true}
-              behindGlowColor="rgba(212, 178, 111, 0.45)"
-              innerGradient="linear-gradient(145deg, rgba(15, 44, 65, 0.95) 0%, rgba(26, 24, 20, 0.98) 100%)"
-              onContactClick={() => {
-                window.open('https://wa.me/5561983614547?text=Olá!%20Gostaria%20de%20agendar%20uma%20conversa%20com%20a%20Priscilla.', '_blank');
-              }}
-            />
+          <div className="relative flex-1 flex flex-col">
+            <div className="relative">
+              <ProfileCard
+                avatarUrl="https://res.cloudinary.com/dxpwgum9x/image/upload/v1782415872/WhatsApp_Image_2026-06-04_at_14.23.49_2_dxivux.jpg"
+                name="Priscilla"
+                title="Fisioterapeuta e Instrutora"
+                handle="equilibrio_studio"
+                status="Disponível para avaliação"
+                contactText="Agendar"
+                behindGlowEnabled={false}
+                showDetailsOverlay={false}
+                innerGradient="linear-gradient(145deg, rgba(15, 44, 65, 0.95) 0%, rgba(26, 24, 20, 0.98) 100%)"
+                onContactClick={() => {
+                  window.open('https://wa.me/5561983614547?text=Olá!%20Gostaria%20de%20agendar%20uma%20conversa%20com%20a%20Priscilla.', '_blank');
+                }}
+              />
 
-            {/* Fine crosshairs decoration for premium editorial feel */}
-            <div className="absolute -top-3 -left-3 w-6 h-6 border-t border-l border-accent-a/35" />
-            <div className="absolute -top-3 -right-3 w-6 h-6 border-t border-r border-accent-a/35" />
+              {/* Fine crosshairs decoration for premium editorial feel */}
+              <div className="absolute -top-3 -left-3 w-6 h-6 border-t border-l border-accent-a/35" />
+              <div className="absolute -top-3 -right-3 w-6 h-6 border-t border-r border-accent-a/35" />
+            </div>
+
+            {/* Clear name and title underneath the photo with very strong contrast */}
+            <div className="mt-5 text-left bg-[#FAF8F5]/90 backdrop-blur-md p-5 rounded-2xl border border-[#1A1814]/5 shadow-[0_4px_20px_rgba(26,24,20,0.03)]">
+              <h4 className="font-display text-2xl font-bold text-[#1A1814] tracking-tight">
+                Dra. Priscilla
+              </h4>
+              <p className="font-sans text-[12px] md:text-xs text-[#F69A4F] uppercase tracking-[0.18em] font-extrabold mt-1.5">
+                Fisioterapeuta e Instrutora de Pilates
+              </p>
+            </div>
           </div>
 
           {/* Integrated Statistics: Placed vertically right beside the image to create a strong visual hierarchy */}
