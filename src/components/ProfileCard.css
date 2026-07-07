@@ -22,8 +22,14 @@
   perspective: 1200px;
   transform: translate3d(0, 0, 0.1px);
   position: relative;
-  touch-action: none;
+  touch-action: pan-y;
   width: 100%;
+}
+
+@media (min-width: 1024px) {
+  .pc-card-wrapper {
+    touch-action: none;
+  }
 }
 
 .pc-behind {

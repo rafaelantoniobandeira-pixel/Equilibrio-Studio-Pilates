@@ -69,10 +69,10 @@ export const InteractiveMetricCard: React.FC<InteractiveMetricCardProps> = ({
   return (
     <div
       ref={cardRef}
-      onPointerMove={handlePointerMove}
-      onPointerEnter={handlePointerEnter}
-      onPointerLeave={handlePointerLeave}
-      className="relative w-full h-full select-none"
+      onPointerMove={isMobile ? undefined : handlePointerMove}
+      onPointerEnter={isMobile ? undefined : handlePointerEnter}
+      onPointerLeave={isMobile ? undefined : handlePointerLeave}
+      className="relative w-full h-full select-none touch-pan-y"
       style={{ perspective: "1000px" }}
     >
       {/* Dynamic Ambient Background Glow */}

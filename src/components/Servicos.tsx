@@ -119,7 +119,7 @@ export default function Servicos() {
       {/* Background Soft Gradients and Architectural elements */}
       <div className="absolute inset-0 bg-[#FAF8F5]" />
       <div className="absolute top-[20%] -left-[10%] w-[45%] aspect-square rounded-full bg-[#0F2C41]/[0.02] blur-[130px] pointer-events-none" />
-      <div className="absolute bottom-[20%] -right-[10%] w-[45%] aspect-square rounded-full bg-[#D4B26F]/[0.03] blur-[130px] pointer-events-none" />
+      <div className="absolute bottom-[20%] -right-[10%] w-[45%] aspect-square rounded-full bg-[#F69A4F]/[0.03] blur-[130px] pointer-events-none" />
 
       {/* Decorative luxury vertical outline label */}
       <div className="absolute right-8 top-32 pointer-events-none opacity-[0.03] select-none font-display italic text-[10vw] leading-none text-[#0F2C41] rotate-90 origin-top-right">
@@ -131,14 +131,14 @@ export default function Servicos() {
         {/* Minimalist Premium Header */}
         <div className="flex flex-col items-center justify-center text-center mb-16 gap-3 relative z-10">
           <div className="flex items-center gap-2 mb-1 justify-center">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#D4B26F]" />
-            <span className="label-eyebrow tracking-[0.25em] text-[0.68rem] font-bold text-[#D4B26F] uppercase">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#F69A4F]" />
+            <span className="label-eyebrow tracking-[0.25em] text-[0.68rem] font-bold text-[#F69A4F] uppercase">
               02 / MODALIDADES E PRÁTICAS
             </span>
           </div>
           <AnimatedTitle className="text-display-md text-[#0F2C41] italic font-light leading-[1.15] tracking-tight max-w-2xl">
-            Nossas <span className="font-sans not-italic text-[#0F2C41]/90 font-extralight">frentes de</span> <br />
-            <span className="text-[#D4B26F] font-normal not-italic font-display">atendimento e bem-estar.</span>
+            Nossas <span className="font-interface not-italic text-[#0F2C41]/90 font-light">frentes de</span> <br />
+            <span className="text-[#F69A4F] font-normal italic">atendimento e bem-estar.</span>
           </AnimatedTitle>
           <p className="font-interface text-sm md:text-base leading-relaxed text-[#5A544F] font-normal max-w-2xl mt-3">
             Através de uma metodologia de movimentos altamente controlada, refinada e sem impactos nocivos, devolvemos a liberdade mecânica e o vigor físico para a sua rotina diária.
@@ -166,7 +166,7 @@ export default function Servicos() {
               >
                 {/* Active Left/Top premium border accent */}
                 <div 
-                  className={`absolute left-0 top-0 bottom-0 w-[3px] bg-[#D4B26F] transition-transform duration-500 origin-left ${
+                  className={`absolute left-0 top-0 bottom-0 w-[3px] bg-[#F69A4F] transition-transform duration-500 origin-left ${
                     isOpen ? 'scale-y-100' : 'scale-y-0'
                   }`}
                 />
@@ -177,7 +177,7 @@ export default function Servicos() {
                     {/* Number label in gold */}
                     <span className={`font-mono text-xs font-bold transition-all duration-500 ${
                       isOpen 
-                        ? 'text-[#D4B26F] scale-110' 
+                        ? 'text-[#F69A4F] scale-110' 
                         : isHovered 
                           ? 'text-[#0F2C41] scale-105' 
                           : 'text-[#1A1814]/30'
@@ -189,7 +189,7 @@ export default function Servicos() {
                     <div className="flex flex-col gap-1">
                       <div className="flex items-center gap-3">
                         <ModalMainIcon size={18} className={`transition-all duration-500 ${
-                          isOpen ? 'text-[#D4B26F]' : 'text-[#1A1814]/30'
+                          isOpen ? 'text-[#F69A4F]' : 'text-[#1A1814]/30'
                         }`} />
                         <h3 className={`font-interface text-md md:text-lg tracking-widest uppercase transition-all duration-500 ${
                           isOpen 
@@ -215,7 +215,7 @@ export default function Servicos() {
                     transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
                     className={`p-2 rounded-full border transition-all duration-500 ${
                       isOpen 
-                        ? 'border-[#D4B26F]/30 bg-[#D4B26F]/10 text-[#D4B26F]' 
+                        ? 'border-[#F69A4F]/30 bg-[#F69A4F]/10 text-[#F69A4F]' 
                         : 'border-transparent text-[#1A1814]/30'
                     }`}
                   >
@@ -244,7 +244,7 @@ export default function Servicos() {
                         
                         {/* Premium Tagline and Description */}
                         <div>
-                          <p className="font-display italic text-[#D4B26F] text-lg md:text-xl font-medium mb-3">
+                          <p className="font-display italic text-[#F69A4F] text-lg md:text-xl font-medium mb-3">
                             {service.tagline}
                           </p>
                           <p className="font-interface text-sm leading-relaxed text-[#5A544F] font-normal">
@@ -255,7 +255,7 @@ export default function Servicos() {
                         {/* List of Benefits in format of linear icons with no photography */}
                         <div className="border-t border-[#0F2C41]/5 pt-8">
                           <h4 className="font-interface text-xs font-bold tracking-widest text-[#0F2C41] uppercase mb-6 flex items-center gap-2">
-                            <span className="w-1 h-1 rounded-full bg-[#D4B26F]" />
+                            <span className="w-1 h-1 rounded-full bg-[#F69A4F]" />
                             Benefícios & Foco de Trabalho
                           </h4>
                           
@@ -264,7 +264,7 @@ export default function Servicos() {
                               const BenefitIcon = benefit.icon;
                               return (
                                 <div key={idx} className="flex items-start gap-4">
-                                  <div className="w-8 h-8 rounded-lg bg-[#D4B26F]/5 border border-[#D4B26F]/15 flex items-center justify-center text-[#D4B26F] shrink-0">
+                                  <div className="w-8 h-8 rounded-lg bg-[#F69A4F]/5 border border-[#F69A4F]/15 flex items-center justify-center text-[#F69A4F] shrink-0">
                                     <BenefitIcon size={14} />
                                   </div>
                                   <div className="flex flex-col gap-0.5">
@@ -287,7 +287,7 @@ export default function Servicos() {
                             href={`https://wa.me/5561983614547?text=${encodeURIComponent(service.whatsappText)}`}
                             target="_blank"
                             rel="noreferrer"
-                            className="group inline-flex items-center gap-2.5 bg-[#0F2C41] hover:bg-[#D4B26F] text-white py-3.5 px-8 font-interface text-xs font-semibold uppercase tracking-wider transition-all duration-300 rounded-full shadow-sm hover:shadow-md"
+                            className="group inline-flex items-center gap-2.5 bg-[#0F2C41] hover:bg-[#F69A4F] text-white py-3.5 px-8 font-interface text-xs font-semibold uppercase tracking-wider transition-all duration-300 rounded-full shadow-sm hover:shadow-md"
                             onClick={(e) => e.stopPropagation()}
                           >
                             <span>{service.ctaText}</span>
