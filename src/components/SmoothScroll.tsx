@@ -35,6 +35,11 @@ export default function SmoothScroll({ speed = 1.0, inertia = 0.075 }: SmoothScr
     let animationFrameId: number | null = null;
 
     const onWheel = (e: WheelEvent) => {
+      // Allow default behavior for pinch-to-zoom or Ctrl+Wheel zooming
+      if (e.ctrlKey || e.metaKey) {
+        return;
+      }
+
       // Only smooth scroll if we are not actively in an anchor click transition
       if (isClickScrolling) {
         // If user rolls wheel during click-scroll, cancel the click scroll and adopt new target
@@ -81,8 +86,29 @@ export default function SmoothScroll({ speed = 1.0, inertia = 0.075 }: SmoothScr
       }
     };
 
+    // Custom Keyboard Zoom handler using Ctrl + / - / 0 inside the iframe/app
+    let zoomPercent = 100;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.ctrlKey || e.metaKey) {
+        if (e.key === '=' || e.key === '+' || e.code === 'Equal' || e.code === 'NumpadAdd') {
+          e.preventDefault();
+          zoomPercent = Math.min(200, zoomPercent + 10);
+          document.documentElement.style.fontSize = `${zoomPercent}%`;
+        } else if (e.key === '-' || e.code === 'Minus' || e.code === 'NumpadSubtract') {
+          e.preventDefault();
+          zoomPercent = Math.max(50, zoomPercent - 10);
+          document.documentElement.style.fontSize = `${zoomPercent}%`;
+        } else if (e.key === '0' || e.code === 'Digit0') {
+          e.preventDefault();
+          zoomPercent = 100;
+          document.documentElement.style.fontSize = '';
+        }
+      }
+    };
+
     window.addEventListener('wheel', onWheel, { passive: false });
     window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('keydown', handleKeyDown);
 
     // Elegant Anchor link click handler (Smooth animated navigation)
     const handleAnchorClick = (e: MouseEvent) => {
@@ -155,6 +181,7 @@ export default function SmoothScroll({ speed = 1.0, inertia = 0.075 }: SmoothScr
     return () => {
       window.removeEventListener('wheel', onWheel);
       window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('keydown', handleKeyDown);
       document.removeEventListener('click', handleAnchorClick);
       if (animationFrameId) cancelAnimationFrame(animationFrameId);
     };
