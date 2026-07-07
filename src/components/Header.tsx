@@ -112,11 +112,11 @@ export default function Header({ isIntroActive = false }: HeaderProps) {
                 className="flex items-center select-none"
               >
                 <div className="flex items-center">
-                  <div className={`relative overflow-hidden ${scrolled ? 'h-11 md:h-13 lg:h-15' : 'h-18 md:h-22 lg:h-26'} w-[180px] md:w-[240px] lg:w-[280px] flex items-center justify-center`}>
+                  <div className={`relative overflow-hidden ${scrolled ? 'h-11 md:h-13 lg:h-15 w-[150px]' : 'h-18 md:h-22 lg:h-26 w-[180px]'} md:w-[240px] lg:w-[280px] flex items-center justify-center`}>
                     <img 
                       src="https://res.cloudinary.com/dxpwgum9x/image/upload/v1783109457/WhatsApp_Image_2026-06-04_at_14.23.49_ebpyof.png" 
                       alt="Equilíbrio Studio Logo" 
-                      className="absolute h-[280%] w-auto max-w-none object-contain top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transition-transform duration-300 group-hover:scale-105"
+                      className={`absolute h-[280%] w-auto max-w-none object-contain top-1/2 -translate-x-1/2 -translate-y-1/2 transition-transform duration-300 group-hover:scale-105 ${scrolled ? 'left-[30%] md:left-1/2' : 'left-1/2'}`}
                       referrerPolicy="no-referrer"
                     />
                   </div>

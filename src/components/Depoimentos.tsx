@@ -98,6 +98,13 @@ export default function Depoimentos() {
 
   const totalPages = Math.max(testimonials.length - visibleCards + 1, 1);
 
+  // Safety correction to avoid empty sliding views when resizing
+  useEffect(() => {
+    if (currentIndex >= totalPages) {
+      setCurrentIndex(Math.max(totalPages - 1, 0));
+    }
+  }, [visibleCards, totalPages, currentIndex]);
+
   const handlePrev = () => {
     setCurrentIndex((prev) => (prev === 0 ? totalPages - 1 : prev - 1));
   };
@@ -134,7 +141,7 @@ export default function Depoimentos() {
           </div>
 
           {/* Navigation Controls in top-right for desktop */}
-          <div className="flex gap-3">
+          <div className="hidden md:flex gap-3">
             <button
               onClick={handlePrev}
               className="w-12 h-12 rounded-full border border-[#1A1814]/10 bg-white hover:bg-[#FAF8F5] hover:border-[#F69A4F] text-[#1A1814]/70 hover:text-[#F69A4F] flex items-center justify-center shadow-sm cursor-pointer hover:scale-110 active:scale-90 transition-all duration-300"
@@ -158,14 +165,14 @@ export default function Depoimentos() {
             ref={sliderRef}
             className="flex gap-6 md:gap-8 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
             style={{
-              transform: `translateX(-${currentIndex * (100 / visibleCards)}%)`,
+              transform: `translateX(calc(-${currentIndex} * (100% + ${visibleCards === 1 ? '24px' : '32px'}) / ${visibleCards}))`,
             }}
           >
             {testimonials.map((item) => (
               <motion.div
                 key={item.id}
                 style={{
-                  width: `calc(${100 / visibleCards}% - ${(visibleCards - 1) * 24 / visibleCards}px)`
+                  width: `calc(${100 / visibleCards}% - ${(visibleCards - 1) * (visibleCards === 1 ? 24 : 32) / visibleCards}px)`
                 }}
                 className="shrink-0 group"
               >
@@ -212,20 +219,43 @@ export default function Depoimentos() {
           </div>
         </div>
 
-        {/* Minimal Bottom Indicator Dots */}
-        <div className="flex items-center justify-center gap-2 mt-12">
-          {[...Array(totalPages)].map((_, idx) => (
+        {/* Bottom Navigation and Indicator Controls */}
+        <div className="flex flex-col items-center justify-center gap-6 mt-12 md:mt-16">
+          <div className="flex items-center gap-5">
+            {/* Mobile Prev Arrow */}
             <button
-              key={idx}
-              onClick={() => setCurrentIndex(idx)}
-              className="relative h-2 rounded-full cursor-pointer transition-all duration-500"
-              style={{
-                width: currentIndex === idx ? '24px' : '8px',
-                backgroundColor: currentIndex === idx ? '#F69A4F' : 'rgba(26, 24, 20, 0.15)',
-              }}
-              aria-label={`Ir para a página ${idx + 1}`}
-            />
-          ))}
+              onClick={handlePrev}
+              className="md:hidden w-11 h-11 rounded-full border border-[#1A1814]/10 bg-white hover:bg-[#FAF8F5] text-[#1A1814]/70 active:scale-95 flex items-center justify-center shadow-sm cursor-pointer transition-all duration-300"
+              aria-label="Depoimento Anterior"
+            >
+              <ArrowLeft size={16} strokeWidth={1.5} />
+            </button>
+
+            {/* Indicator Dots */}
+            <div className="flex items-center gap-2">
+              {[...Array(totalPages)].map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setCurrentIndex(idx)}
+                  className="relative h-2 rounded-full cursor-pointer transition-all duration-500"
+                  style={{
+                    width: currentIndex === idx ? '24px' : '8px',
+                    backgroundColor: currentIndex === idx ? '#F69A4F' : 'rgba(26, 24, 20, 0.15)',
+                  }}
+                  aria-label={`Ir para a página ${idx + 1}`}
+                />
+              ))}
+            </div>
+
+            {/* Mobile Next Arrow */}
+            <button
+              onClick={handleNext}
+              className="md:hidden w-11 h-11 rounded-full border border-[#1A1814]/10 bg-white hover:bg-[#FAF8F5] text-[#1A1814]/70 active:scale-95 flex items-center justify-center shadow-sm cursor-pointer transition-all duration-300"
+              aria-label="Próximo Depoimento"
+            >
+              <ArrowRight size={16} strokeWidth={1.5} />
+            </button>
+          </div>
         </div>
 
       </div>

@@ -64,10 +64,12 @@
   overflow: hidden;
 }
 
-.pc-card:hover,
-.pc-card.active {
-  transition: none;
-  transform: translateZ(0) rotateX(var(--rotate-y)) rotateY(var(--rotate-x));
+@media (min-width: 768px) {
+  .pc-card:hover,
+  .pc-card.active {
+    transition: none;
+    transform: translateZ(0) rotateX(var(--rotate-y)) rotateY(var(--rotate-x));
+  }
 }
 
 .pc-card-shell.entering .pc-card {

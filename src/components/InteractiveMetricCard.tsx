@@ -24,9 +24,19 @@ export const InteractiveMetricCard: React.FC<InteractiveMetricCardProps> = ({
   const [coords, setCoords] = useState({ x: 50, y: 50 });
   const [rotation, setRotation] = useState({ x: 0, y: 0 });
   const [isHovered, setIsHovered] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   const handlePointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
-    if (!cardRef.current) return;
+    if (isMobile || !cardRef.current) return;
     const rect = cardRef.current.getBoundingClientRect();
     
     // Position of the pointer relative to the card bounds (0% to 100%)
@@ -46,10 +56,12 @@ export const InteractiveMetricCard: React.FC<InteractiveMetricCardProps> = ({
   };
 
   const handlePointerEnter = () => {
+    if (isMobile) return;
     setIsHovered(true);
   };
 
   const handlePointerLeave = () => {
+    if (isMobile) return;
     setIsHovered(false);
     setRotation({ x: 0, y: 0 });
   };

@@ -64,6 +64,17 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
   const wrapRef = useRef<HTMLDivElement>(null);
   const shellRef = useRef<HTMLDivElement>(null);
 
+  const [isMobile, setIsMobile] = React.useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   const enterTimerRef = useRef<number | null>(null);
   const leaveRafRef = useRef<number | null>(null);
 
@@ -255,6 +266,7 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
   );
 
   useEffect(() => {
+    if (isMobile) return;
     if (!enableTilt || !tiltEngine) return;
 
     const shell = shellRef.current;
@@ -305,6 +317,7 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
       shell.classList.remove('entering');
     };
   }, [
+    isMobile,
     enableTilt,
     enableMobileTilt,
     tiltEngine,
