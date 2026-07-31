@@ -183,7 +183,7 @@ export default function Contato() {
                   >
                     {/* Beautiful image of the professional/studio */}
                     <img 
-                      src="https://res.cloudinary.com/dxpwgum9x/image/upload/v1780778097/ChatGPT_Image_6_de_jun._de_2026_17_34_43_wmi8pb.png" 
+                      src="https://res.cloudinary.com/dxpwgum9x/image/upload/f_auto,q_auto,w_800/v1780778097/ChatGPT_Image_6_de_jun._de_2026_17_34_43_wmi8pb.png" 
                       alt="Priscilla e o ambiente acolhedor do nosso estúdio de Pilates"
                       className="w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-[1.04]"
                       referrerPolicy="no-referrer"

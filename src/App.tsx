@@ -12,6 +12,7 @@ import Servicos from './components/Servicos';
 import Galeria from './components/Galeria';
 import VideoImersivo from './components/VideoImersivo';
 import Depoimentos from './components/Depoimentos';
+import Faq from './components/Faq';
 import Contato from './components/Contato';
 import Footer from './components/Footer';
 import SmoothScroll from './components/SmoothScroll';
@@ -68,6 +69,9 @@ export default function App() {
 
       {/* 9. Typographic quotation commentary */}
       <Depoimentos />
+
+      {/* 9.5. GEO & Local SEO FAQ Section */}
+      <Faq />
 
       {/* 10. Contact detail maps and buttons */}
       <Contato />

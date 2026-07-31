@@ -73,14 +73,16 @@ export default function VideoImersivo() {
             onClick={() => setIsPlayingFull(true)}
             className="w-full aspect-[16/9] rounded-[24px] md:rounded-[40px] overflow-hidden shadow-[0_25px_65px_rgba(26,24,20,0.16)] border border-[#1A1814]/10 relative group cursor-pointer bg-[#FAF8F5]"
           >
-            {/* Ambient muted loop background video */}
+            {/* Ambient muted loop background video with optimized poster and preload */}
             <video
               ref={videoRef}
               src={videoUrl}
-              autoPlay
+              autoPlay={!isMobile}
               loop
               muted
               playsInline
+              preload={isMobile ? "none" : "metadata"}
+              poster="https://res.cloudinary.com/dxpwgum9x/video/upload/f_auto,q_auto,w_800,so_0/v1782417133/video_estudio_pilates_lc9jeo.jpg"
               className="w-full h-full object-cover transition-transform duration-[1.2s] group-hover:scale-[1.03] pointer-events-none"
               referrerPolicy="no-referrer"
             />

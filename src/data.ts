@@ -51,49 +51,49 @@ export const servicesData: ServiceItem[] = [
 export const galleryData: GalleryItem[] = [
   {
     id: 'g1',
-    image: 'https://res.cloudinary.com/dxpwgum9x/image/upload/v1780760754/WhatsApp_Image_2026-06-04_at_14.24.38_2_lptvyj.jpg',
+    image: 'https://res.cloudinary.com/dxpwgum9x/image/upload/f_auto,q_auto,w_800/v1780760754/WhatsApp_Image_2026-06-04_at_14.24.38_2_lptvyj.jpg',
     alt: 'Nosso estúdio completo e equipado com aparelhos de alto padrão, idealizado para um atendimento calmo e focado no seu bem-estar.',
     gridClass: 'md:col-span-2 md:row-span-2'
   },
   {
     id: 'g2',
-    image: 'https://res.cloudinary.com/dxpwgum9x/image/upload/v1780760753/WhatsApp_Image_2026-06-04_at_14.23.49_5_cnqtzf.jpg',
+    image: 'https://res.cloudinary.com/dxpwgum9x/image/upload/f_auto,q_auto,w_800/v1780760753/WhatsApp_Image_2026-06-04_at_14.23.49_5_cnqtzf.jpg',
     alt: 'Exercício de força e controle motor na cadeira de Pilates, promovendo estabilidade articular e melhora postural.',
     gridClass: 'md:col-span-1 md:row-span-1'
   },
   {
     id: 'g3',
-    image: 'https://res.cloudinary.com/dxpwgum9x/image/upload/v1780760754/WhatsApp_Image_2026-06-04_at_14.23.49_4_dkemeg.jpg',
+    image: 'https://res.cloudinary.com/dxpwgum9x/image/upload/f_auto,q_auto,w_800/v1780760754/WhatsApp_Image_2026-06-04_at_14.23.49_4_dkemeg.jpg',
     alt: 'Ventosaterapia: técnica de liberação miofascial que estimula o fluxo sanguíneo local, aliviando tensões musculares profundas.',
     gridClass: 'md:col-span-1 md:row-span-1'
   },
   {
     id: 'g4',
-    image: 'https://res.cloudinary.com/dxpwgum9x/image/upload/v1780760754/WhatsApp_Image_2026-06-04_at_14.23.49_7_bcsvup.jpg',
+    image: 'https://res.cloudinary.com/dxpwgum9x/image/upload/f_auto,q_auto,w_800/v1780760754/WhatsApp_Image_2026-06-04_at_14.23.49_7_bcsvup.jpg',
     alt: 'Atendimento clínico individualizado na maca com acessórios de Pilates para ganho de mobilidade e reabilitação ativa.',
     gridClass: 'md:col-span-1 md:row-span-2'
   },
   {
     id: 'g5',
-    image: 'https://res.cloudinary.com/dxpwgum9x/image/upload/v1780760754/WhatsApp_Image_2026-06-04_at_14.24.38_3_hi7cj6.jpg',
+    image: 'https://res.cloudinary.com/dxpwgum9x/image/upload/f_auto,q_auto,w_800/v1780760754/WhatsApp_Image_2026-06-04_at_14.24.38_3_hi7cj6.jpg',
     alt: 'Instrução atenta e individualizada, respeitando os limites do seu corpo e guiando cada movimento com sensibilidade e foco.',
     gridClass: 'md:col-span-2 md:row-span-1'
   },
   {
     id: 'g6',
-    image: 'https://res.cloudinary.com/dxpwgum9x/image/upload/v1780760754/WhatsApp_Image_2026-06-04_at_14.23.49_6_btx5xl.jpg',
+    image: 'https://res.cloudinary.com/dxpwgum9x/image/upload/f_auto,q_auto,w_800/v1780760754/WhatsApp_Image_2026-06-04_at_14.23.49_6_btx5xl.jpg',
     alt: 'Sala de atividades de solo com revestimento em tatame confortável, ideal para alongamentos, reabilitação e aulas infantis.',
     gridClass: 'md:col-span-1 md:row-span-1'
   },
   {
     id: 'g7',
-    image: 'https://res.cloudinary.com/dxpwgum9x/image/upload/v1780760754/WhatsApp_Image_2026-06-04_at_14.23.49_8_iqr6vl.jpg',
+    image: 'https://res.cloudinary.com/dxpwgum9x/image/upload/f_auto,q_auto,w_800/v1780760754/WhatsApp_Image_2026-06-04_at_14.23.49_8_iqr6vl.jpg',
     alt: 'Acessórios e molas de Pilates minuciosamente organizados para garantir a precisão biomecânica nas suas sessões.',
     gridClass: 'md:col-span-2 md:row-span-1'
   },
   {
     id: 'g8',
-    image: 'https://res.cloudinary.com/dxpwgum9x/image/upload/v1780760754/WhatsApp_Image_2026-06-04_at_14.23.49_9_w9wplt.jpg',
+    image: 'https://res.cloudinary.com/dxpwgum9x/image/upload/f_auto,q_auto,w_800/v1780760754/WhatsApp_Image_2026-06-04_at_14.23.49_9_w9wplt.jpg',
     alt: 'Recepção aconchegante e silenciosa, pensada para convidar você a desacelerar a mente antes mesmo do início da sua prática.',
     gridClass: 'md:col-span-1 md:row-span-1'
   }

@@ -231,16 +231,16 @@ export default function Depoimentos() {
               <ArrowLeft size={16} strokeWidth={1.5} />
             </button>
 
-            {/* Indicator Dots */}
+            {/* Indicator Dots - Hardware-Accelerated transform: scaleX without layout reflow */}
             <div className="flex items-center gap-2">
               {[...Array(totalPages)].map((_, idx) => (
                 <button
                   key={idx}
                   onClick={() => setCurrentIndex(idx)}
-                  className="relative h-2 rounded-full cursor-pointer transition-all duration-500"
+                  className="relative h-2 w-6 rounded-full cursor-pointer transition-transform duration-500 ease-out origin-center will-change-transform"
                   style={{
-                    width: currentIndex === idx ? '24px' : '8px',
-                    backgroundColor: currentIndex === idx ? '#F69A4F' : 'rgba(26, 24, 20, 0.15)',
+                    transform: currentIndex === idx ? 'scaleX(1)' : 'scaleX(0.35)',
+                    backgroundColor: currentIndex === idx ? '#C85E0E' : 'rgba(26, 24, 20, 0.2)',
                   }}
                   aria-label={`Ir para a página ${idx + 1}`}
                 />

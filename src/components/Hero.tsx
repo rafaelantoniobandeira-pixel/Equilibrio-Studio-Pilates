@@ -79,7 +79,7 @@ export default function Hero({ isIntroActive = false }: HeroProps) {
               scale: { duration: 12, ease: [0.16, 1, 0.3, 1] },
               opacity: { duration: 2.2, ease: 'easeOut' },
             }}
-            src="https://res.cloudinary.com/dxpwgum9x/image/upload/v1780778097/ChatGPT_Image_6_de_jun._de_2026_17_34_43_wmi8pb.png"
+            src="https://res.cloudinary.com/dxpwgum9x/image/upload/f_auto,q_auto,w_1600/v1780778097/ChatGPT_Image_6_de_jun._de_2026_17_34_43_wmi8pb.png"
             alt="Espaço Studio Pilates com luz solar"
             className="w-full h-full object-cover object-center brightness-[0.72] contrast-[1.08] saturate-[0.92] blur-[0.4px]"
             referrerPolicy="no-referrer"

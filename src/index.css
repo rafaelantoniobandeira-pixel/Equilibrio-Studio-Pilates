@@ -86,13 +86,16 @@
   color: #F69A4F;
 }
 
-/* Adaptation of label-eyebrow inside light beige sections to ensure optimal WCAG contrast and premium readability */
+/* Adaptation of label-eyebrow inside light beige sections to ensure optimal WCAG AA contrast and premium readability */
 #sobre .label-eyebrow,
 #servicos .label-eyebrow,
 #galeria .label-eyebrow,
-#contato .label-eyebrow {
-  color: #F69A4F;
-  font-weight: 600;
+#contato .label-eyebrow,
+#video-institucional .label-eyebrow,
+#depoimentos .label-eyebrow,
+#faq .label-eyebrow {
+  color: #C85E0E;
+  font-weight: 700;
 }
 
 /* Custom transition for editorial lines */

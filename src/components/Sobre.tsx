@@ -66,7 +66,7 @@ export default function Sobre() {
           <div className="relative flex-1 flex flex-col">
             <div className="relative">
               <ProfileCard
-                avatarUrl="https://res.cloudinary.com/dxpwgum9x/image/upload/v1782415872/WhatsApp_Image_2026-06-04_at_14.23.49_2_dxivux.jpg"
+                avatarUrl="https://res.cloudinary.com/dxpwgum9x/image/upload/f_auto,q_auto,w_800/v1782415872/WhatsApp_Image_2026-06-04_at_14.23.49_2_dxivux.jpg"
                 name="Priscilla"
                 title="Fisioterapeuta e Instrutora"
                 handle="equilibrio_studio"
