@@ -30,59 +30,84 @@
     <meta property="twitter:description" content="Aulas de pilates e fisioterapia no Gama-DF. Especialidade em pilates clínico, dor nas costas e reabilitação postural." />
     <meta property="twitter:image" content="https://res.cloudinary.com/dxpwgum9x/image/upload/v1780778097/ChatGPT_Image_6_de_jun._de_2026_17_34_43_wmi8pb.png" />
 
-    <!-- Schema Markup (JSON-LD) -->
+    <!-- Schema Markup (JSON-LD) GEO & Local SEO Optimized -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "ExerciseGym",
-        "name": "Equilíbrio Studio Pilates",
-        "description": "Estúdio de pilates clínico, reabilitação postural, alívio de dor nas costas e fortalecimento do core no Gama-DF (Ponte Alta Norte), sob a liderança da Dra. Priscilla.",
-        "image": "https://res.cloudinary.com/dxpwgum9x/image/upload/v1780778097/ChatGPT_Image_6_de_jun._de_2026_17_34_43_wmi8pb.png",
-        "url": "https://equilibriostudiopilates.com.br",
-        "telephone": "+55-61-98361-4547",
-        "priceRange": "$$",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "Condomínio Ponte de Terra, Lote 17, Loja 07, Ponte Alta Norte",
-          "addressLocality": "Gama",
-          "addressRegion": "DF",
-          "postalCode": "72426-010",
-          "addressCountry": "BR"
-        },
-        "geo": {
-          "@type": "GeoCoordinates",
-          "latitude": -15.972486984687588,
-          "longitude": -48.04945532414197
-        },
-        "openingHoursSpecification": [
+        "@graph": [
           {
-            "@type": "OpeningHoursSpecification",
-            "dayOfWeek": [
-              "Monday",
-              "Tuesday",
-              "Wednesday",
-              "Thursday",
-              "Friday"
+            "@type": ["Physiotherapy", "HealthAndBeautyBusiness"],
+            "@id": "https://equilibriostudiopilates.com.br/#business",
+            "name": "Equilíbrio Studio Pilates",
+            "alternateName": ["Equilíbrio Pilates Gama", "Equilíbrio Studio Pilates & Fisioterapia"],
+            "description": "Estúdio referência em Pilates Clínico, Fisioterapia Integrativa e Reabilitação Postural no Gama e Ponte Alta Norte (DF). Atendimento individualizado sob coordenação da Dra. Priscilla, especializado em dor nas costas, hérnia de disco, gestantes e idosos.",
+            "url": "https://equilibriostudiopilates.com.br",
+            "logo": "https://res.cloudinary.com/dxpwgum9x/image/upload/v1783275613/WhatsApp_Image_2026-06-04_at_14.23.49_1_orl68u.png",
+            "image": "https://res.cloudinary.com/dxpwgum9x/image/upload/v1780778097/ChatGPT_Image_6_de_jun._de_2026_17_34_43_wmi8pb.png",
+            "telephone": "+55-61-98361-4547",
+            "priceRange": "$$",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "Setor Habitacional Ponte de Terra, Lj 07 - Ponte Alta Norte (Gama)",
+              "addressLocality": "Gama",
+              "addressRegion": "DF",
+              "postalCode": "72427-010",
+              "addressCountry": "BR"
+            },
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": -15.972486984687588,
+              "longitude": -48.04945532414197
+            },
+            "areaServed": [
+              {
+                "@type": "AdministrativeArea",
+                "name": "Ponte Alta Norte (Gama)"
+              },
+              {
+                "@type": "AdministrativeArea",
+                "name": "Gama"
+              },
+              {
+                "@type": "AdministrativeArea",
+                "name": "Distrito Federal"
+              }
             ],
-            "opens": "07:00",
-            "closes": "12:00"
-          },
-          {
-            "@type": "OpeningHoursSpecification",
-            "dayOfWeek": [
-              "Monday",
-              "Tuesday",
-              "Wednesday",
-              "Thursday",
-              "Friday"
+            "knowsAbout": [
+              "Pilates Clínico",
+              "Fisioterapia Reabilitativa",
+              "Reabilitação Postural Global",
+              "Tratamento de Dor nas Costas e Hérnia de Disco",
+              "Pilates para Gestantes",
+              "Pilates para Idosos e Terceira Idade",
+              "Fortalecimento do Core e Estabilização Segmentar",
+              "Biomecânica da Coluna Vertebral"
             ],
-            "opens": "14:00",
-            "closes": "21:00"
+            "founder": {
+              "@type": "Person",
+              "name": "Dra. Priscilla",
+              "jobTitle": "Fisioterapeuta Responsável",
+              "knowsAbout": ["Fisioterapia", "Pilates Clínico", "Reabilitação Coluna Vertebral"]
+            },
+            "openingHoursSpecification": [
+              {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+                "opens": "07:00",
+                "closes": "12:00"
+              },
+              {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+                "opens": "14:00",
+                "closes": "21:00"
+              }
+            ],
+            "sameAs": [
+              "https://instagram.com/pequilibriostudio",
+              "https://maps.google.com/?q=Equil%C3%ADbrio+Studio+Pilates+Ponte+Alta+Norte+Gama+DF"
+            ]
           }
-        ],
-        "sameAs": [
-          "https://instagram.com/pequilibriostudio",
-          "https://maps.google.com/?q=Equil%C3%ADbrio+Studio+Pilates+Ponte+Alta+Norte+Gama+DF"
         ]
       }
     </script>
