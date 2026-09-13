@@ -16,15 +16,15 @@ export default function Hero({ isIntroActive = false }: HeroProps) {
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
-  // Smooth springs for gorgeous fluid movement
-  const springX = useSpring(mouseX, { stiffness: 35, damping: 25 });
-  const springY = useSpring(mouseY, { stiffness: 35, damping: 25 });
+  // Smooth springs for fluid, subtle movement
+  const springX = useSpring(mouseX, { stiffness: 25, damping: 30 });
+  const springY = useSpring(mouseY, { stiffness: 25, damping: 30 });
 
-  // Derived transforms for beautiful 3D layered parallax depth
-  const bgX = useTransform(springX, (x) => x * -25);
-  const bgY = useTransform(springY, (y) => y * -25);
-  const contentX = useTransform(springX, (x) => x * 10);
-  const contentY = useTransform(springY, (y) => y * 10);
+  // Subtle layered depth
+  const bgX = useTransform(springX, (x) => x * -10);
+  const bgY = useTransform(springY, (y) => y * -10);
+  const contentX = useTransform(springX, (x) => x * 4);
+  const contentY = useTransform(springY, (y) => y * 4);
 
   useEffect(() => {
     const handleMouseMoveGlobal = (e: globalThis.MouseEvent) => {
@@ -178,9 +178,9 @@ export default function Hero({ isIntroActive = false }: HeroProps) {
           >
             <a
               href="#contato"
-              className="group relative cta-shining glow-btn-orange inline-flex items-center gap-3 bg-white-crm text-black-org py-4 px-8 font-interface text-xs font-semibold uppercase tracking-[0.2em] transition-all duration-300 hover:bg-white hover:-translate-y-0.5 hover:shadow-[0_12px_32px_rgba(246,154,79,0.15)]"
+              className="group inline-flex items-center gap-3 bg-white-crm text-black-org py-4 px-8 font-interface text-xs font-semibold uppercase tracking-[0.2em] transition-all duration-300 hover:bg-[#C85E0E] hover:text-white"
             >
-              <span className="relative z-10 flex items-center gap-2">
+              <span className="flex items-center gap-2">
                 Agendar avaliação
                 <ArrowRight size={13} className="group-hover:translate-x-1.5 transition-transform duration-300" />
               </span>
@@ -188,7 +188,7 @@ export default function Hero({ isIntroActive = false }: HeroProps) {
 
             <a
               href="#sobre"
-              className="group relative cta-shining glow-btn-teal inline-flex items-center gap-3 border border-white-crm/25 text-white-crm py-4 px-8 font-interface text-xs font-medium uppercase tracking-[0.2em] transition-all duration-300 hover:bg-white-crm/5 hover:border-white-crm hover:-translate-y-0.5"
+              className="inline-flex items-center gap-3 border border-white-crm/30 text-white-crm py-4 px-8 font-interface text-xs font-medium uppercase tracking-[0.2em] transition-all duration-300 hover:bg-white-crm/10 hover:border-white-crm"
             >
               Conheça o estúdio
             </a>

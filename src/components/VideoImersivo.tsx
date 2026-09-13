@@ -46,20 +46,17 @@ export default function VideoImersivo() {
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         
-        {/* Editorial Section Header */}
-        <div className="flex flex-col items-center justify-center text-center mb-16 gap-3">
-          <div className="flex items-center gap-2 mb-1">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#F69A4F]" />
-            <span className="label-eyebrow tracking-[0.25em] text-[0.68rem] font-bold text-[#F69A4F] uppercase">
-              04 / ATMOSFERA E PRÁTICA
-            </span>
-          </div>
+        {/* Section Header */}
+        <div className="flex flex-col items-center justify-center text-center mb-14 gap-2.5">
+          <span className="label-eyebrow tracking-[0.2em] text-[0.7rem] font-semibold text-[#C85E0E] uppercase">
+            Atmosfera & Conforto
+          </span>
           <AnimatedTitle className="text-display-md text-[#1A1814] italic font-light leading-[1.15] tracking-tight max-w-2xl">
-            Sinta a experiência <br />
-            <span className="font-sans not-italic text-[#1A1814]/90 font-extralight">do nosso espaço</span>
+            Sinta a tranquilidade <br />
+            <span className="text-[#C85E0E] font-normal italic">do nosso espaço.</span>
           </AnimatedTitle>
           <p className="font-interface text-sm md:text-base leading-relaxed text-[#5A544F] font-light max-w-2xl mt-2">
-            Explore em movimento o carinho, a precisão e o acolhimento que preparamos para receber você em cada sessão.
+            Conheça o estúdio em movimento: aparelhos modernos, ambiente climatizado e o silêncio necessário para cuidar do seu bem-estar.
           </p>
         </div>
 
@@ -123,52 +120,50 @@ export default function VideoImersivo() {
         </div>
 
         {/* Editorial Highlight Quote Below Video */}
-        <div className="text-center max-w-4xl mx-auto mt-20 px-6">
+        <div className="text-center max-w-4xl mx-auto mt-16 px-6">
           <motion.p
-            initial={{ opacity: 0, y: 25 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.9, delay: 0.2 }}
-            className="font-display italic text-2xl md:text-3xl lg:text-4xl text-[#1A1814]/90 font-light leading-relaxed tracking-tight"
+            transition={{ duration: 0.8, delay: 0.1 }}
+            className="font-display italic text-2xl md:text-3xl lg:text-4xl text-[#1A1814] font-light leading-relaxed tracking-tight"
           >
-            "O movimento consciente <span className="text-[#F69A4F] font-medium">reabilita o corpo</span>, acalma a mente e devolve a <span className="text-[#F69A4F] font-medium">autonomia</span> para a sua vida."
+            "O movimento consciente <span className="text-[#C85E0E] font-medium">reabilita o corpo</span>, acalma a mente e devolve a <span className="text-[#C85E0E] font-medium">autonomia</span> para a sua vida."
           </motion.p>
           <motion.div 
             initial={{ width: 0 }}
-            whileInView={{ width: '80px' }}
+            whileInView={{ width: '64px' }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="h-[1.5px] bg-[#F69A4F]/40 mx-auto mt-10" 
+            transition={{ duration: 0.7, delay: 0.3 }}
+            className="h-[1.5px] bg-[#C85E0E]/40 mx-auto mt-8" 
           />
         </div>
 
-        {/* Discrete & Elegant Credibility Metrics - Fully 3D Interactive Grid */}
-        <div className="max-w-6xl mx-auto mt-16 px-6 w-full relative z-20">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full justify-center">
+        {/* Calm & Trustworthy Credibility Metrics */}
+        <div className="max-w-5xl mx-auto mt-14 px-4 w-full relative z-20">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full justify-center">
             <InteractiveMetricCard
               numberText="500+"
-              label="Alunos Atendidos"
-              description="Atendidos com cuidado individualizado e diagnósticos biomecânicos minuciosos para alívio de lesões."
-              subLabel="Gama - DF"
-              icon={<Users size={24} />}
+              label="Alunos & Pacientes"
+              description="Acompanhados com foco biomecânico minucioso para alívio de lesões e ganho de mobilidade."
+              subLabel="Gama & Região"
             />
             <InteractiveMetricCard
               numberText="5+ Anos"
               label="Experiência Clínica"
-              description="De dedicação científica, aperfeiçoamento constante e carinho com cada queixa ou limitação física."
-              subLabel="Estúdio de Excelência"
-              icon={<Award size={24} />}
-              iconColorClass="text-[#FAF8F5] dark:text-[#FAF8F5]"
-              accentBgClass="bg-[#F69A4F]"
+              description="Dedicação contínua, acompanhamento de perto e ambiente acolhedor com turmas reduzidas."
+              subLabel="Estúdio Consolidado"
             />
             <InteractiveMetricCard
               numberText="5.0"
               label="Nota Máxima no Google"
-              description="100% de satisfação com depoimentos reais que atestam a qualidade, o silêncio e o respeito da nossa equipe."
-              subLabel="Avaliações Reais"
+              description="Reconhecimento de alunos reais que comprovam a atenção, a pontualidade e o cuidado da nossa equipe."
+              subLabel="Avaliações Verificadas"
               icon={
-                <div className="flex gap-0.5 text-[#F69A4F]">
-                  <Star size={20} className="fill-current" />
+                <div className="flex gap-0.5 text-[#C85E0E]">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} size={14} className="fill-current" />
+                  ))}
                 </div>
               }
             />

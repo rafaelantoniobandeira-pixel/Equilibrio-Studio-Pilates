@@ -46,25 +46,16 @@ export default function Sobre() {
   return (
     <section 
       id="sobre" 
-      className="w-full bg-[#F4F1EC] pt-24 pb-36 md:pt-32 md:pb-48 border-b border-line-dark overflow-visible text-[#1A1814] relative"
+      className="w-full bg-[#F4F1EC] pt-20 pb-28 md:pt-28 md:pb-36 border-b border-line-dark overflow-visible text-[#1A1814] relative"
     >
-      {/* Subtle fine architectural lines for Awwwards-style editorial structure */}
-      <div className="absolute top-0 left-1/4 w-[1px] h-full bg-[#1A1814]/[0.04] pointer-events-none hidden md:block" />
-      <div className="absolute top-0 left-3/4 w-[1px] h-full bg-[#1A1814]/[0.04] pointer-events-none hidden md:block" />
-
-      {/* Decorative large background text for layered editorial depth */}
-      <div className="absolute left-6 top-10 pointer-events-none opacity-[0.02] select-none font-display italic text-[12vw] leading-none text-[#1A1814]">
-        Acolhimento
-      </div>
-
       <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start relative z-10">
         
-        {/* Left Side: Significant larger photo of Priscilla, bleeding and overflowing the boundaries */}
-        <div className="lg:col-span-7 relative group select-none w-full flex flex-col md:flex-row gap-6 items-stretch">
+        {/* Left Side: Photo of Priscilla and Stats */}
+        <div className="lg:col-span-7 relative select-none w-full flex flex-col md:flex-row gap-6 items-stretch">
           
-          {/* Main Visual Frame with 3D Profile Card effect */}
+          {/* Main Visual Frame */}
           <div className="relative flex-1 flex flex-col">
-            <div className="relative">
+            <div className="relative rounded-2xl overflow-hidden shadow-lg border border-[#1A1814]/10 bg-[#1A1814]">
               <ProfileCard
                 avatarUrl="https://res.cloudinary.com/dxpwgum9x/image/upload/f_auto,q_auto,w_800/v1782415872/WhatsApp_Image_2026-06-04_at_14.23.49_2_dxivux.jpg"
                 name="Priscilla"
@@ -74,78 +65,62 @@ export default function Sobre() {
                 contactText="Agendar"
                 behindGlowEnabled={false}
                 showDetailsOverlay={false}
-                innerGradient="linear-gradient(145deg, rgba(15, 44, 65, 0.95) 0%, rgba(26, 24, 20, 0.98) 100%)"
+                innerGradient="linear-gradient(145deg, rgba(19, 62, 77, 0.95) 0%, rgba(26, 24, 20, 0.98) 100%)"
                 onContactClick={() => {
                   window.open('https://wa.me/5561983614547?text=Olá!%20Gostaria%20de%20agendar%20uma%20conversa%20com%20a%20Priscilla.', '_blank');
                 }}
               />
-
-              {/* Fine crosshairs decoration for premium editorial feel */}
-              <div className="absolute -top-3 -left-3 w-6 h-6 border-t border-l border-accent-a/35" />
-              <div className="absolute -top-3 -right-3 w-6 h-6 border-t border-r border-accent-a/35" />
             </div>
 
-            {/* Clear name and title underneath the photo with very strong contrast */}
-            <div className="mt-5 text-left bg-[#FAF8F5]/90 backdrop-blur-md p-5 rounded-2xl border border-[#1A1814]/5 shadow-[0_4px_20px_rgba(26,24,20,0.03)]">
-              <h4 className="font-display text-2xl font-bold text-[#1A1814] tracking-tight">
+            {/* Clear name and title underneath the photo */}
+            <div className="mt-4 text-left bg-white/90 backdrop-blur-md p-5 rounded-xl border border-[#1A1814]/8 shadow-sm">
+              <h4 className="font-display text-xl md:text-2xl font-bold text-[#1A1814] tracking-tight">
                 Dra. Priscilla
               </h4>
-              <p className="font-sans text-[12px] md:text-xs text-[#F69A4F] uppercase tracking-[0.18em] font-extrabold mt-1.5">
-                Fisioterapeuta e Instrutora de Pilates
+              <p className="font-sans text-xs text-[#C85E0E] uppercase tracking-wider font-bold mt-1">
+                Fisioterapeuta e Instrutora de Pilates Clínico
               </p>
             </div>
           </div>
 
-          {/* Integrated Statistics: Placed vertically right beside the image to create a strong visual hierarchy */}
-          <div className="flex md:flex-col justify-between md:justify-center gap-2.5 sm:gap-4 lg:gap-6 mt-4 md:mt-0 md:w-48 lg:w-56 shrink-0 relative z-20 w-full">
+          {/* Integrated Statistics */}
+          <div className="flex md:flex-col justify-between md:justify-center gap-3 sm:gap-4 lg:gap-5 mt-2 md:mt-0 md:w-48 lg:w-52 shrink-0 relative z-20 w-full">
             <motion.div 
-              initial={{ opacity: 0, x: -15 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.1 }}
-              className="flex-1 bg-[#FAF8F5]/85 backdrop-blur-md p-3 sm:p-5 border border-line-sut rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 flex flex-col justify-between min-w-0"
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="flex-1 bg-white/90 backdrop-blur-sm p-4 sm:p-5 border border-[#1A1814]/8 rounded-xl shadow-sm flex flex-col justify-between min-w-0"
             >
-              <div className="flex items-center gap-1 sm:gap-1.5 text-accent-a font-mono text-[0.55rem] sm:text-[0.62rem] tracking-wider sm:tracking-widest uppercase mb-1">
-                <span className="w-1 h-1 rounded-full bg-accent-a animate-pulse" />
-                Tempo
-              </div>
               <Counter value={5} suffix="+" />
-              <span className="font-interface text-[0.58rem] sm:text-[0.68rem] uppercase tracking-wider text-[#6B6560] font-medium mt-1 sm:mt-2 leading-tight">
-                Anos de estúdio
+              <span className="font-interface text-xs uppercase tracking-wider text-[#6B6560] font-medium mt-1 leading-tight">
+                Anos de estúdio no Gama
               </span>
             </motion.div>
 
             <motion.div 
-              initial={{ opacity: 0, x: -15 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="flex-1 bg-[#FAF8F5]/85 backdrop-blur-md p-3 sm:p-5 border border-line-sut rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 flex flex-col justify-between min-w-0"
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="flex-1 bg-white/90 backdrop-blur-sm p-4 sm:p-5 border border-[#1A1814]/8 rounded-xl shadow-sm flex flex-col justify-between min-w-0"
             >
-              <div className="flex items-center gap-1 sm:gap-1.5 text-[#0E7281] font-mono text-[0.55rem] sm:text-[0.62rem] tracking-wider sm:tracking-widest uppercase mb-1">
-                <span className="w-1 h-1 rounded-full bg-[#0E7281]" />
-                Comunidade
-              </div>
               <Counter value={500} suffix="+" />
-              <span className="font-interface text-[0.58rem] sm:text-[0.68rem] uppercase tracking-wider text-[#6B6560] font-medium mt-1 sm:mt-2 leading-tight">
-                Alunos atendidos
+              <span className="font-interface text-xs uppercase tracking-wider text-[#6B6560] font-medium mt-1 leading-tight">
+                Alunos e pacientes acolhidos
               </span>
             </motion.div>
 
             <motion.div 
-              initial={{ opacity: 0, x: -15 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="flex-1 bg-[#FAF8F5]/85 backdrop-blur-md p-3 sm:p-5 border border-line-sut rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 flex flex-col justify-between min-w-0"
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="flex-1 bg-white/90 backdrop-blur-sm p-4 sm:p-5 border border-[#1A1814]/8 rounded-xl shadow-sm flex flex-col justify-between min-w-0"
             >
-              <div className="flex items-center gap-1 sm:gap-1.5 text-accent-a font-mono text-[0.55rem] sm:text-[0.62rem] tracking-wider sm:tracking-widest uppercase mb-1">
-                <span className="w-1 h-1 rounded-full bg-accent-a" />
-                Diferenciais
-              </div>
               <Counter value={3} />
-              <span className="font-interface text-[0.58rem] sm:text-[0.68rem] uppercase tracking-wider text-[#6B6560] font-medium mt-1 sm:mt-2 leading-tight">
-                Especialidades
+              <span className="font-interface text-xs uppercase tracking-wider text-[#6B6560] font-medium mt-1 leading-tight">
+                Especialidades integradas
               </span>
             </motion.div>
           </div>
@@ -153,38 +128,35 @@ export default function Sobre() {
         </div>
 
         {/* Right Side: Typography block */}
-        <div className="lg:col-span-5 flex flex-col items-start justify-center pt-4 lg:pt-10">
+        <div className="lg:col-span-5 flex flex-col items-start justify-center pt-2 lg:pt-8">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 25 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-100px' }}
-            transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+            viewport={{ once: true, margin: '-80px' }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="flex flex-col items-start"
           >
-            <div className="flex items-center gap-2 mb-4">
-              <span className="w-1.5 h-1.5 rounded-full bg-accent-a" />
-              <span className="label-eyebrow tracking-[0.25em] text-[0.68rem] font-semibold text-[#1A1814]/65">
-                01 / CONHEÇA A PRISCILLA
-              </span>
-            </div>
+            <span className="label-eyebrow tracking-[0.2em] text-[0.7rem] font-semibold text-[#C85E0E] uppercase mb-3">
+              Fisioterapeuta Responsável
+            </span>
             
-            <AnimatedTitle className="text-display-md text-[#1A1814] italic font-light leading-[1.1] tracking-tight mb-8">
+            <AnimatedTitle className="text-display-md text-[#1A1814] italic font-light leading-[1.15] tracking-tight mb-6">
               Seu corpo ouvido <span className="font-sans not-italic font-extralight text-[#1A1814]/90">com calma,</span> <br className="hidden md:block" />
-              <span className="text-accent-a font-normal">respeito e acolhimento.</span>
+              <span className="text-[#C85E0E] font-normal italic">respeito e acolhimento.</span>
             </AnimatedTitle>
 
-            <div className="font-interface text-sm md:text-[0.98rem] text-[#1A1814]/90 leading-relaxed font-light space-y-6 max-w-xl">
-              <p className="border-l-2 border-[#0E7281]/25 pl-4 py-1">
-                Olá, eu sou a <strong className="font-medium text-[#1A1814]">Priscilla</strong>. Sei que, muitas vezes, dar o primeiro passo ou recomeçar pode trazer insegurança, especialmente se você já convive com dores ou rotinas que não respeitam o seu momento.
+            <div className="font-interface text-sm md:text-base text-[#1A1814]/90 leading-relaxed font-light space-y-5 max-w-xl">
+              <p className="border-l-2 border-[#C85E0E]/40 pl-4 py-1 text-[#2D2A26]">
+                Olá, eu sou a <strong className="font-semibold text-[#1A1814]">Priscilla</strong>. Sei que, muitas vezes, dar o primeiro passo ou recomeçar pode trazer receio, especialmente se você já convive com dores na coluna ou rotinas aceleradas que não respeitam o seu ritmo.
               </p>
               <p>
-                No meu estúdio, o foco não é a cobrança por desempenho ou movimentos repetitivos sem sentido. Eu convido você a experimentar algo raro hoje em dia: <strong>um atendimento genuinamente focado em você</strong>, respeitando as suas limitações e fortalecendo a sua saúde.
+                No meu estúdio, o foco não é a cobrança por desempenho ou repetições mecânicas sem critério. O objetivo é oferecer <strong>um atendimento genuinamente focado em você</strong>, respeitando suas limitações e fortalecendo sua saúde biomecânica.
               </p>
               <p>
                 Quero te ouvir, entender sua história e desenhar um caminho seguro para que você recupere o prazer de se mover sem dor.
               </p>
-              <p className="text-[#6B6560] italic pt-2 border-t border-[#1A1814]/5">
-                Dê a si mesma(o) essa chance. Vamos agendar uma conversa para eu te guiar nessa transformação?
+              <p className="text-[#6B6560] italic pt-2 border-t border-[#1A1814]/10">
+                Dê a si mesma(o) essa chance. Agende uma conversa para alinharmos o melhor plano para você.
               </p>
             </div>
           </motion.div>

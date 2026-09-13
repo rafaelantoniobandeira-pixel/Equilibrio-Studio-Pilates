@@ -126,17 +126,14 @@ export default function Depoimentos() {
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-8">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-14 gap-6">
           <div>
-            <div className="flex items-center gap-2 mb-3">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#F69A4F]" />
-              <span className="label-eyebrow tracking-[0.25em] text-[0.68rem] font-bold text-[#F69A4F] uppercase">
-                05 / HISTÓRIAS REAIS
-              </span>
-            </div>
+            <span className="label-eyebrow tracking-[0.2em] text-[0.7rem] font-semibold text-[#C85E0E] uppercase mb-2 block">
+              Depoimentos & Experiências
+            </span>
             <AnimatedTitle className="text-display-md text-[#1A1814] italic font-light leading-[1.15] tracking-tight max-w-2xl">
               Quem vivencia o <br />
-              <span className="text-[#F69A4F] font-normal italic">nosso cuidado diário.</span>
+              <span className="text-[#C85E0E] font-normal italic">nosso cuidado diário.</span>
             </AnimatedTitle>
           </div>
 
@@ -144,14 +141,14 @@ export default function Depoimentos() {
           <div className="hidden md:flex gap-3">
             <button
               onClick={handlePrev}
-              className="w-12 h-12 rounded-full border border-[#1A1814]/10 bg-white hover:bg-[#FAF8F5] hover:border-[#F69A4F] text-[#1A1814]/70 hover:text-[#F69A4F] flex items-center justify-center shadow-sm cursor-pointer hover:scale-110 active:scale-90 transition-all duration-300"
+              className="w-12 h-12 rounded-full border border-[#1A1814]/10 bg-white hover:bg-[#FAF8F5] hover:border-[#C85E0E] text-[#1A1814]/70 hover:text-[#C85E0E] flex items-center justify-center shadow-sm cursor-pointer hover:scale-105 active:scale-95 transition-all duration-300"
               aria-label="Depoimento Anterior"
             >
               <ArrowLeft size={18} strokeWidth={1.5} />
             </button>
             <button
               onClick={handleNext}
-              className="w-12 h-12 rounded-full border border-[#1A1814]/10 bg-white hover:bg-[#FAF8F5] hover:border-[#F69A4F] text-[#1A1814]/70 hover:text-[#F69A4F] flex items-center justify-center shadow-sm cursor-pointer hover:scale-110 active:scale-90 transition-all duration-300"
+              className="w-12 h-12 rounded-full border border-[#1A1814]/10 bg-white hover:bg-[#FAF8F5] hover:border-[#C85E0E] text-[#1A1814]/70 hover:text-[#C85E0E] flex items-center justify-center shadow-sm cursor-pointer hover:scale-105 active:scale-95 transition-all duration-300"
               aria-label="Próximo Depoimento"
             >
               <ArrowRight size={18} strokeWidth={1.5} />
@@ -189,7 +186,7 @@ export default function Depoimentos() {
                     {/* Star Rating & Quote Text */}
                     <div>
                       {/* Five Stars Rating */}
-                      <div className="flex gap-1 text-[#F69A4F] mb-6">
+                      <div className="flex gap-1 text-[#C85E0E] mb-6">
                         {[...Array(item.rating)].map((_, i) => (
                           <Star key={i} size={15} className="fill-current" />
                         ))}
@@ -206,7 +203,7 @@ export default function Depoimentos() {
                       <h4 className="font-interface text-sm font-semibold text-[#1A1814] tracking-wide">
                         {item.author}
                       </h4>
-                      <p className="font-interface text-[0.72rem] text-[#F69A4F] font-semibold tracking-wider uppercase mt-1">
+                      <p className="font-interface text-[0.72rem] text-[#C85E0E] font-semibold tracking-wider uppercase mt-1">
                         {item.service}
                       </p>
                     </div>

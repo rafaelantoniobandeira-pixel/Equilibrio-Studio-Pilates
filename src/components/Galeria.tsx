@@ -123,17 +123,14 @@ export default function Galeria() {
           
           {/* Section Header & Title integrated directly inside the background of the 3D carousel stage */}
           <div className="absolute inset-x-0 top-0 md:top-6 flex flex-col items-center text-center pointer-events-none select-none z-0">
-            <div className="flex items-center gap-2 mb-3 justify-center">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#0E7281]" />
-              <span className="label-eyebrow tracking-[0.25em] text-[0.68rem] font-semibold text-[#1A1814]/65 uppercase">
-                03 / CONEXÃO VISUAL
-              </span>
-            </div>
+            <span className="label-eyebrow tracking-[0.2em] text-[0.7rem] font-semibold text-[#C85E0E] uppercase mb-2">
+              Galeria & Instalações
+            </span>
             <AnimatedTitle className="text-display-md text-[#1A1814] italic font-light leading-[1.1] tracking-tight max-w-4xl px-6">
               Nosso espaço <span className="font-sans not-italic text-[#1A1814]/90 font-extralight">e refinamento em</span> <br />
-              <span className="text-[#F69A4F] font-normal not-italic relative inline-block">
+              <span className="text-[#C85E0E] font-normal not-italic relative inline-block">
                 detalhes
-                <span className="absolute left-0 -bottom-1 w-full h-[3px] bg-[#F69A4F]/25 rounded-full" />
+                <span className="absolute left-0 -bottom-1 w-full h-[2px] bg-[#C85E0E]/30 rounded-full" />
               </span>
             </AnimatedTitle>
           </div>
@@ -263,7 +260,7 @@ export default function Galeria() {
             {/* Minimalist Prev Button */}
             <button
               onClick={carouselPrev}
-              className="w-12 h-12 rounded-full border border-[#1A1814]/15 text-[#1A1814]/75 hover:border-[#F69A4F] hover:text-[#F69A4F] flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-90 cursor-pointer bg-white/40 hover:bg-white shadow-sm"
+              className="w-12 h-12 rounded-full border border-[#1A1814]/15 text-[#1A1814]/75 hover:border-[#C85E0E] hover:text-[#C85E0E] flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-90 cursor-pointer bg-white/40 hover:bg-white shadow-sm"
               aria-label="Anterior"
             >
               <ArrowLeft size={18} strokeWidth={1.5} />
@@ -285,7 +282,7 @@ export default function Galeria() {
                       className="relative h-2 rounded-full cursor-pointer transition-all duration-500"
                       style={{
                         width: isActiveDot ? '20px' : '8px',
-                        backgroundColor: isActiveDot ? '#F69A4F' : 'rgba(26, 24, 20, 0.15)',
+                        backgroundColor: isActiveDot ? '#C85E0E' : 'rgba(26, 24, 20, 0.15)',
                       }}
                       aria-label={`Ir para imagem ${idx + 1}`}
                     />
@@ -301,7 +298,7 @@ export default function Galeria() {
             {/* Minimalist Next Button */}
             <button
               onClick={carouselNext}
-              className="w-12 h-12 rounded-full border border-[#1A1814]/15 text-[#1A1814]/75 hover:border-[#F69A4F] hover:text-[#F69A4F] flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-90 cursor-pointer bg-white/40 hover:bg-white shadow-sm"
+              className="w-12 h-12 rounded-full border border-[#1A1814]/15 text-[#1A1814]/75 hover:border-[#C85E0E] hover:text-[#C85E0E] flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-90 cursor-pointer bg-white/40 hover:bg-white shadow-sm"
               aria-label="Próximo"
             >
               <ArrowRight size={18} strokeWidth={1.5} />
@@ -324,7 +321,7 @@ export default function Galeria() {
             {/* Top row */}
             <div className="flex items-center justify-between w-full relative z-10 max-w-7xl mx-auto">
               <div className="flex flex-col text-left">
-                <span className="font-interface text-[0.68rem] uppercase tracking-[0.25em] text-[#F69A4F] font-medium">
+                <span className="font-interface text-[0.68rem] uppercase tracking-[0.25em] text-[#C85E0E] font-medium">
                   Equilíbrio Studio Pilates
                 </span>
                 <span className="font-interface text-[0.6rem] text-[#8A8680] uppercase tracking-widest mt-1">

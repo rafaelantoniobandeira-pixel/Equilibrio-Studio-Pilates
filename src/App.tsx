@@ -17,7 +17,6 @@ import Contato from './components/Contato';
 import Footer from './components/Footer';
 import SmoothScroll from './components/SmoothScroll';
 import IntroLoader from './components/IntroLoader';
-import CustomCursor from './components/CustomCursor';
 import FloatingWhatsApp from './components/FloatingWhatsApp';
 
 export default function App() {
@@ -26,13 +25,10 @@ export default function App() {
   return (
     <div id="app-root" className="min-h-screen bg-black-org text-white-crm relative selection:bg-accent-a selection:text-black-org">
       
-      {/* Premium Custom Mouse Follower Circle */}
-      <CustomCursor />
-
-      {/* Premium Session-scoped Intro Loader */}
+      {/* Session-scoped Intro Loader */}
       <IntroLoader onComplete={() => setIsIntroActive(false)} />
 
-      {/* Premium Smooth Scroll Engine */}
+      {/* Smooth Scroll Engine */}
       <SmoothScroll speed={1.1} inertia={0.075} />
 
       {/* 3. Global Header Header */}
